@@ -1,6 +1,7 @@
 # Requirements
 ## Packages
 - i3
+- feh (wallpaper utility)
 - picom (compositor)
 - polybar (custom bars)
 - rofi (launcher)

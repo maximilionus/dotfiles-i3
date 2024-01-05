@@ -41,6 +41,11 @@ exec --no-startup-id dunst
 exec --no-startup-id "setxkbmap -layout us,"
 exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
+# Set background using feh
+# Background fetched from any supported by feh format on path
+# "~/.config/wallpaper*"
+exec --no-startup-id "feh --bg-scale ~/.config/wallpaper*"
+
 # Start compositor
 exec --no-startup-id picom
 
