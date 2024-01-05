@@ -36,7 +36,7 @@ exec --no-startup-id nm-applet
 
 # Set keyboard layout switch
 exec --no-startup-id "setxkbmap -layout us,"
-exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle"
+exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
 # Start compositor
 exec --no-startup-id picom
