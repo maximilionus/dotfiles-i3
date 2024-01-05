@@ -4,8 +4,8 @@ set -e
 
 echo "-> Installing the i3 configurations set."
 
-sources=("i3" "picom" "polybar" "rofi")
-targets=("$HOME/.config" "$HOME/.config" "$HOME/.config" "$HOME/.config")
+sources=("i3" "picom" "polybar" "rofi" "dunst")
+targets=("$HOME/.config" "$HOME/.config" "$HOME/.config" "$HOME/.config" "$HOME/.config")
 
 for ((i=0; i<${#targets[@]}; i++)); do
     target="${targets[i]}"

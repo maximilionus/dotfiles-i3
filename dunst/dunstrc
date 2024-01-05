@@ -1,0 +1,37 @@
+[global]
+    # Position the notification in the top right corner
+    origin = top-center
+
+    # Maximum number of notification (0 means no limit)
+    notification_limit = 5
+
+    # Defines width in pixels of frame around the notification window.
+    frame_width = 0
+
+    # Defines color of the frame around the notification window.
+    frame_color = "#aaaaaa"
+
+    separator_color = frame
+
+    font = Monospace 12
+
+    corner_radius = 8
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 5
+
+[urgency_normal]
+    background = "#707070"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#aa0000"
+    timeout = 15
+
+[fullscreen_delay_everything]
+    fullscreen = pushback
