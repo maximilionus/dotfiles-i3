@@ -38,7 +38,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 
 # Set keyboard layout switch
-exec --no-startup-id "setxkbmap -layout us,"
+exec --no-startup-id "setxkbmap -layout us,ru"
 exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
 # Set background using feh
@@ -179,7 +179,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Delete exec 'i3-msg exit'"
+bindsym $mod+Shift+Delete exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
