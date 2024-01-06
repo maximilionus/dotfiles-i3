@@ -1,6 +1,6 @@
 configuration {
   modi: "window,drun,run,combi";
-  font: "MesloLGSDZ Nerd Font 12";
+  font: "monospace 12";
   combi-modi: "window,drun";
 }
 @theme "gruvbox-dark"
