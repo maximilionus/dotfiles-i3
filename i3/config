@@ -76,7 +76,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # lock current session
-bindsym $mod+Escape exec i3lock -c 282828
+bindsym $mod+Escape exec "i3lock -c 282828 && sleep 2 && xset dpms force off"
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
