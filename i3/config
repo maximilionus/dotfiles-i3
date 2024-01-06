@@ -37,10 +37,6 @@ exec --no-startup-id nm-applet
 # Start notification daemon
 exec --no-startup-id dunst
 
-# Set keyboard layout switch
-exec --no-startup-id "setxkbmap -layout us,ru"
-exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
-
 # Set background using feh
 # Background fetched from any supported by feh format on path
 # "~/.config/wallpaper*"
