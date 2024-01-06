@@ -3,4 +3,4 @@ configuration {
   font: "monospace 12";
   combi-modi: "window,drun";
 }
-@theme "gruvbox-dark"
+@theme "Arc-Dark"
