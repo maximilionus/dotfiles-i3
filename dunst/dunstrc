@@ -18,20 +18,19 @@
     corner_radius = 8
 
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
+    background = "#242424"
+    foreground = "#f4f4f4"
     timeout = 5
 
 [urgency_normal]
     background = "#707070"
-    foreground = "#ffffff"
+    foreground = "#f4f4f4"
     timeout = 10
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#aa0000"
-    timeout = 15
+    background = "#7366F8"
+    foreground = "#f4f4f4"
+    timeout = 10
 
 [fullscreen_delay_everything]
     fullscreen = pushback
