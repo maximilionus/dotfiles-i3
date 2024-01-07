@@ -6,6 +6,7 @@
 - polybar (custom bars)
 - rofi (launcher)
 - dunst (notifications daemon)
+- udiskie, udisks2 (usb automounting)
 - maim (screenshots)
 - xclip (copy screenshots to clipboard)
 - unclutter (auto-hide mouse cursor)
