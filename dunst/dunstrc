@@ -2,6 +2,11 @@
     # Position the notification in the top right corner
     origin = top-center
 
+    # dynamic width from 0 to 300
+    # width = (0, 300)
+    # constant width of 300
+    width = (300, 500)
+
     # Maximum number of notification (0 means no limit)
     notification_limit = 5
 
@@ -28,7 +33,7 @@
     timeout = 10
 
 [urgency_critical]
-    background = "#7366F8"
+    background = "#7a7a7a"
     foreground = "#f4f4f4"
     timeout = 10
 
