@@ -6,6 +6,7 @@
 - polybar (custom bars)
 - rofi (launcher)
 - dunst (notifications daemon)
+- brightnessctl (control display backlights)
 - udiskie, udisks2 (usb automounting)
 - maim (screenshots)
 - xclip (copy screenshots to clipboard)
