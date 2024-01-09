@@ -7,7 +7,7 @@
 - rofi (launcher)
 - dunst (notifications daemon)
 - brightnessctl (control display backlights)
-- udiskie, udisks2 (usb automounting)
+- thunar, thunar-volman, gvfs, gvfs-afc, gvfs-mtp (lightweight gui file manager and daemon for automatic removable devices management)
 - maim (screenshots)
 - xclip (copy screenshots to clipboard)
 - unclutter (auto-hide mouse cursor)

@@ -32,7 +32,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start usb automounter daemon
-exec --no-startup-id udiskie
+exec --no-startup-id thunar --daemon
 
 # Start notification daemon
 exec --no-startup-id dunst
