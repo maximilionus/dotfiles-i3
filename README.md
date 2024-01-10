@@ -1,17 +1,16 @@
 # Requirements
 ## Packages
 - i3
-- feh (wallpaper utility)
 - picom (compositor)
-- polybar (custom bars)
+- polybar (custom top bar)
 - rofi (launcher)
 - dunst (notifications daemon)
-- brightnessctl (control display backlights)
+- feh (wallpaper utility)
+- brightnessctl (control display brightness)
 - thunar, thunar-volman, gvfs, gvfs-afc, gvfs-mtp (lightweight gui file manager and daemon for automatic removable devices management)
-- maim (screenshots)
-- xclip (copy screenshots to clipboard)
+- maim, xclip (screenshots, copy to clipboard)
 - unclutter (auto-hide mouse cursor)
-- playerctl (media playback control)
+- playerctl (unified MPRIS media playback control)
 
 ## Fonts
 Any NerdFonts patched font as monospace will work. Required mostly for the icons.
