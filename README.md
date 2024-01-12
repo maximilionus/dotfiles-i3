@@ -7,6 +7,7 @@
 - dunst (notifications daemon)
 - feh (wallpaper utility)
 - brightnessctl (control display brightness)
+- redshift (adjusts the color temperature of screen)
 - thunar, thunar-volman, gvfs, gvfs-afc, gvfs-mtp (lightweight gui file manager and daemon for automatic removable devices management)
 - maim, xclip (screenshots, copy to clipboard)
 - unclutter (auto-hide mouse cursor)
