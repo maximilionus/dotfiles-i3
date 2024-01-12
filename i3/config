@@ -68,6 +68,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Screenshots
 bindsym Print exec (maim -s -u | xclip -selection clipboard -t image/png) && notify-send Screenshot Copied
 bindsym $mod+Print exec maim -s -u  ~/Pictures/$(date +%s).png && notify-send Screenshot Saved
+bindsym $mod+Shift+Print exec maim -u  ~/Pictures/$(date +%s).png && notify-send Screenshot "Saved (Full Desktop)"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
