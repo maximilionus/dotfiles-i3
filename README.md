@@ -14,26 +14,24 @@
 - `playerctl` - unified MPRIS media playback control
 
 ## Fonts
-Any NerdFonts patched font assigned to monospace with fontconfig will work. Required mostly for the icons and powerline symbols.
+### Families
+This project uses 3 custom font families to assign the fonts. Any NerdFonts patched font will work (required mostly for the icons and powerline symbols).
 
-- Example configuration:
-  `~/.config/fontconfig/fonts.conf`
-```xml
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-<fontconfig>
-    <alias>
-        <family>monospace</family>
-        <prefer><family>MesloLGSDZ Nerd Font</family></prefer>
-    </alias>
-</fontconfig>
-```
+- `i3_font_main` - main font, used in i3wm itself
+- `i3_font_bar` - font for top bar (polybar, i3status, etc.)
+- `i3_font_launcher` - font for application launcher (rofi, dmenu, etc.)
+
+### Configure
+The [installer script](./install.sh) will copy the font configuration from `fontconfig/*` to `~/.config/fontconfig/conf.d/` of the current user. Default configuration uses the **MesloLGSDZ Nerd Font** by default, but you are free to use whatever supported font you want.
+
+> Note
+> Some applications, especially the sandboxed ones (flatpak, etc.), may not be able to read user fontconfig. To fix this issue, move the configuration files from `~/.config/fontconfig/conf.d/` to system-wide `/etc/fonts/conf.d/`.
 
 # Install
 1. Install the requirements.
-2. Run the `install.sh` script. It will **link** all configurations to a required location. Be aware, that you **can not delete or move** the current directory.
+2. Prepare the fonts.
 3. Prepare the `.xinitrc` script or any Desktop Manager to start the x11 **i3** session.
-4. Configure the required fonts.
+4. Run the `install.sh` script. It will **copy** all configurations to a required location. You can safely remove the cloned repository after a successful install.
 5. Start **i3**.
 
 # Keys
@@ -53,7 +51,7 @@ Any NerdFonts patched font assigned to monospace with fontconfig will work. Requ
 | Display brightness | Fn keys |
 | Media playback | Fn keys |
 
-# Layout
+# Keyboard Layout
 This repository does not provide any keyboard layout configuration. It's expected to be set by user through the **xorg xinit** configuration files.
 
 - Example configuration:
