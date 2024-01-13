@@ -2,23 +2,13 @@
 
 set -e
 
-echo "-> Installing the tools configuration:"
-
-sources=("i3" "picom" "polybar" "rofi" "dunst")
-targets=("$HOME/.config" "$HOME/.config" "$HOME/.config" "$HOME/.config" "$HOME/.config")
-
-for ((i=0; i<${#targets[@]}; i++)); do
-    target="${targets[i]}"
-    source="${sources[i]}"
-
-    echo "==> Configuration for \"$source\":"
-    cp -rfv $(realpath "$source") "$target"
-done
+echo "-> Installing the configurations:"
+packages=("i3" "picom" "polybar" "rofi" "dunst")
+cp -rfv --target-directory=$HOME/.config "${packages[@]}"
 
 echo "-> Installing the font configuration:"
 fonts_source=./fontconfig
 fonts_target=~/.config/fontconfig/conf.d
-
 mkdir -pv $fonts_target
 cp -rvf $fonts_source/* $fonts_target/
 
