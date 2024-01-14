@@ -44,9 +44,10 @@ exec --no-startup-id polybar
 # Start cursor auto-hider utility
 exec --no-startup-id unclutter
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# Start playerctl daemon
+# Starting the daemon is necessary to control the playback in last-active order.
+# Disabling it will make the playback control refer the currently active window.
+exec --no-startup-id playerctld daemon
 
 # Use brightnessctl to adjust display backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
