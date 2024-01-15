@@ -8,7 +8,7 @@ fi
 
 playerctl_status=$(playerctl status 2> /dev/null)
 
-if [[ -z "$playerctl_status" ]]; then
+if [[ -z "$playerctl_status" || "$playerctl_status" == "Stopped" ]]; then
     echo ""
 elif [[ "$playerctl_status" == "Playing" ]]; then
     metadata=$(playerctl metadata --format "󰐊 {{ artist }} - {{ title }}")
