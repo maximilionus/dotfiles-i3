@@ -1,6 +1,7 @@
 ## About
 Minimalistic and lightweight i3 window manager configuration
 
+
 ## Requirements
 ### Packages
 - `i3`- window manager **[required]**
@@ -31,12 +32,53 @@ The [installer script](./install.sh) will copy the font configuration from `font
 > Some applications, especially the sandboxed ones (flatpak, etc.), may not be able to read user fontconfig. To fix this issue, move the configuration files from `~/.config/fontconfig/conf.d/` to system-wide `/etc/fonts/conf.d/`, or allow the sandbox to access the user configuration.  
 > Flatpak fix: `flatpak --user override --filesystem=~/.config/fontconfig:ro`
 
+
 ## Install
 1. Install the requirements.
 2. Prepare the fonts.
 3. Prepare the `.xinitrc` script or any Desktop Manager to start the x11 **i3** session.
-4. Run the `install.sh` script. It will **copy** all configurations to a required location. You can safely remove the cloned repository after a successful install.
-5. Start **i3**.
+4. Clone this repository with **git** (preferred for updates pulling) or download the source code archive.
+5. Run the [installer script](./install.sh) script. It will **copy** all configurations to a required location. You can safely remove the cloned repository after a successful install.
+6. Start **i3**.
+
+
+## Update
+### Unmodified
+How to update the unmodified configuration.
+
+1. Pull changes with **git**:
+```sh
+$ git pull
+```
+
+2. Run the installer script again to apply the changes:
+```sh
+$ ./install.sh
+```
+
+3. Restart the shell.
+
+
+### Modified
+It is expected that you'll use **git** to make a new branch (`local` in this example) for applying the tweaks and commit all the changes in that branch. Follow the steps below to apply the updates to it.
+
+1. Pull changes with **git** (`origin` - Expected to be the original repository, not forks):
+```sh
+$ git pull origin
+```
+
+2. Merge the remote `master` branch into `local` and resolve any merge conflicts:
+```sh
+$ git merge origin/master local
+```
+
+3. Run the installer script again to apply the changes:
+```sh
+$ ./install.sh
+```
+
+4. Restart the shell.
+
 
 ## Keys
 | Command | Bind |
@@ -56,6 +98,7 @@ The [installer script](./install.sh) will copy the font configuration from `font
 | Display brightness | Fn keys |
 | Media playback | Fn keys |
 
+
 ## Keyboard Layout
 This repository does not provide any keyboard layout configuration. It's expected to be set by user through the **xorg xinit** configuration files.
 
@@ -68,8 +111,10 @@ setxkbmap -layout us,jp
 setxkbmap -option 'grp:win_space_toggle'
 ```
 
+
 ## Wallpaper
 **feh** will try to load any image placed on path `~/.local/share/wallpaper*` automatically on **i3** start.
+
 
 ## Modules
 This section contains detailed explanation for some custom components of this project.
@@ -85,6 +130,7 @@ Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinu
 | Switch simplified mode | Right Mouse Button |
 | Skip 10 seconds | Mouse Scroll Down |
 | Go 10 seconds back | Mouse Scroll Up |
+
 
 ## Lock
 Session lock uses the default `i3lock` and `xset dpms`. Be aware that it does not integrate with any Desktop Manager.
