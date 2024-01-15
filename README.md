@@ -41,8 +41,9 @@ The [installer script](./install.sh) will copy the font configuration from `font
 # Keys
 | Command | Bind |
 | :------ | :--: |
-| Meta | Win/Meta |
+| Meta key | Win/Meta |
 | Lock session | meta+Esc |
+| Kill Xorg session | meta+Shift+Del |
 | Horizontal layout | meta+G |
 | Vertical layout | meta+V |
 | Move window | meta + h,j,k,l |
@@ -77,10 +78,9 @@ This section contains detailed explanation for some custom components of this pr
 ### Playback control
 Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinux.org/title/MPRIS)-compliant applications. Module automatically fetches the current playback status and meta information and displays it in the status bar.
 
-- Controls:
-
-| Action | Input |
-| :----- | :---: |
+Controls:
+| Command | Bind |
+| :------ | :---: |
 | Pause/Play | Left Mouse Button |
 | Skip 10 seconds | Mouse Scroll Down |
 | Go 10 seconds back | Mouse Scroll Up |
