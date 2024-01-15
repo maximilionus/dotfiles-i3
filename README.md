@@ -1,3 +1,6 @@
+# About
+Minimalistic and lightweight i3 window manager configuration
+
 # Requirements
 ## Packages
 - `i3`- window manager **[required]**
@@ -66,6 +69,20 @@ setxkbmap -option 'grp:win_space_toggle'
 
 # Wallpaper
 **feh** will try to load any image placed on path `~/.local/share/wallpaper*` automatically on **i3** start.
+
+# Modules
+This section contains detailed explanation for some custom components of this project.
+
+## Polybar
+### Playback control
+Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinux.org/title/MPRIS)-compliant applications. Module automatically fetches the current playback status and meta information and displays it in the status bar.
+
+- Controls
+| Action | Input |
+| :----- | :---: |
+| Pause/Play | Left Mouse Button |
+| Skip 10 seconds | Mouse Scroll Down |
+| Go 10 seconds back | Mouse Scroll Up |
 
 # Lock
 Session lock uses the default `i3lock` and `xset dpms`. Be aware that it does not integrate with any Desktop Manager.
