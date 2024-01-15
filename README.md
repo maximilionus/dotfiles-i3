@@ -29,8 +29,7 @@ This project uses 3 custom font families to assign the fonts. Any NerdFonts patc
 The [installer script](./install.sh) will copy the font configuration from `fontconfig/*` to `~/.config/fontconfig/conf.d/` of the current user. Default configuration uses the **MesloLGSDZ Nerd Font** by default, but you are free to use whatever supported font you want.
 
 > **Note**  
-> Some applications, especially the sandboxed ones (flatpak, etc.), may not be able to read user fontconfig. To fix this issue, move the configuration files from `~/.config/fontconfig/conf.d/` to system-wide `/etc/fonts/conf.d/`, or allow the sandbox to access the user configuration.  
-> Flatpak fix: `flatpak --user override --filesystem=~/.config/fontconfig:ro`
+> Some applications, especially the sandboxed ones (flatpak, etc.), may not be able to read user fontconfig. To fix this issue, move the configuration files from `~/.config/fontconfig/conf.d/` to system-wide `/etc/fonts/conf.d/`, or allow the sandbox to access the user configuration.
 
 
 ## Install
