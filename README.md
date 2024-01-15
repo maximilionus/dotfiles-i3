@@ -77,7 +77,8 @@ This section contains detailed explanation for some custom components of this pr
 ### Playback control
 Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinux.org/title/MPRIS)-compliant applications. Module automatically fetches the current playback status and meta information and displays it in the status bar.
 
-- Controls
+- Controls:
+
 | Action | Input |
 | :----- | :---: |
 | Pause/Play | Left Mouse Button |
