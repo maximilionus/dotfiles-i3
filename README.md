@@ -82,6 +82,7 @@ Controls:
 | Command | Bind |
 | :------ | :---: |
 | Pause/Play | Left Mouse Button |
+| Switch simplified mode | Right Mouse Button |
 | Skip 10 seconds | Mouse Scroll Down |
 | Go 10 seconds back | Mouse Scroll Up |
 

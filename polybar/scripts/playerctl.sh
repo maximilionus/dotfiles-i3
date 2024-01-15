@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Check if playerctl is installed
+if ! command -v playerctl &> /dev/null; then
+    exit 1
+fi
+
+module_mode=0
+
+switch_mode() {
+    case "$module_mode" in
+        0) module_mode=1 ;;
+        1) module_mode=0 ;;
+    esac
+}
+
 print_metadata() {
     local icon="$1"
     local color="$2"
@@ -21,22 +35,27 @@ print_metadata() {
     echo "$metadata"
 }
 
-# Check if playerctl is installed
-if ! command -v playerctl &> /dev/null; then
-    exit 1
-fi
+while true; do
+    playerctl_status=$(playerctl status 2> /dev/null)
+    trap "switch_mode" USR1  # Detect if simplified mode requested by user
 
-playerctl_status=$(playerctl status 2> /dev/null)
-
-if [[ -z "$playerctl_status" || $playerctl_status == "Stopped" ]]; then
-    echo ""
-else
-    artist=$(playerctl metadata --format "{{ artist }}")
-    title=$(playerctl metadata --format "{{ title }}")
-
-    if [[ $playerctl_status == "Playing" ]]; then
-        print_metadata "󰐊" "#7366F8" "$artist" "$title"
+    if [[ -z "$playerctl_status" || $playerctl_status == "Stopped" ]]; then
+        echo ""
     else
-        print_metadata "󰏤" "#808080" "$artist" "$title"
+        if [[ module_mode -eq 0 ]]; then
+            artist=$(playerctl metadata --format "{{ artist }}")
+            title=$(playerctl metadata --format "{{ title }}")
+        else
+            artist=""
+            title="Playback"
+        fi
+
+        if [[ $playerctl_status == "Playing" ]]; then
+            print_metadata "󰐊" "#7366F8" "$artist" "$title"
+        else
+            print_metadata "󰏤" "#808080" "$artist" "$title"
+        fi
     fi
-fi
+
+    sleep 1
+done
