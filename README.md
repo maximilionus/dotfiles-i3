@@ -37,12 +37,12 @@ The [installer script](./install.sh) will copy the font configuration from `font
 2. Prepare the fonts.
 3. Prepare the `.xinitrc` script or any Desktop Manager to start the x11 **i3** session.
 4. Clone this repository with **git** (preferred for updates pulling) or download the source code archive.
-5. Run the [installer script](./install.sh) script. It will **copy** all configurations to a required location. You can safely remove the cloned repository after a successful install.
+5. Run the [installer script](./install.sh) script. It will **copy** all configurations to a required location. Keep the cloned repository after a successful install if you want to pull the updates from time to time.
 6. Start **i3**.
 
 
 ## Update
-### Unmodified
+### Original
 How to update the unmodified configuration.
 
 1. Pull changes with **git**:
