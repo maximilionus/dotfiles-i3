@@ -5,7 +5,13 @@ if ! command -v playerctl &> /dev/null; then
     exit 1
 fi
 
+# Default module mode set here.
+# 0 - Full output
+# 1 - Simplified output, no metadata
 module_mode=0
+
+# Module refresh delay in seconds
+module_refresh_delay=1
 
 switch_mode() {
     case "$module_mode" in
@@ -37,7 +43,9 @@ print_metadata() {
 
 while true; do
     playerctl_status=$(playerctl status 2> /dev/null)
-    trap "switch_mode" USR1  # Detect if simplified mode requested by user
+
+    # Detect if simplified mode requested by user
+    trap "switch_mode" USR1
 
     if [[ -z "$playerctl_status" || $playerctl_status == "Stopped" ]]; then
         echo ""
@@ -57,5 +65,5 @@ while true; do
         fi
     fi
 
-    sleep 1
+    sleep $module_refresh_delay
 done
