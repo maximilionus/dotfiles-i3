@@ -10,6 +10,10 @@ fi
 # 1 - Simplified output, no metadata
 module_mode=0
 
+# Define the max length of the output characters,
+# output gets truncated if exceeds the limit.
+module_output_max_length=50
+
 # Module refresh delay in seconds
 module_refresh_delay=1
 
@@ -29,16 +33,20 @@ print_metadata() {
     local metadata
 
     if [[ -n "$artist" && -n "$title" ]]; then
-        metadata="%{F$color}$icon $artist - $title%{F-}"
+        metadata="$artist - $title"
     elif [[ -n "$artist" ]]; then
-        metadata="%{F$color}$icon $artist%{F-}"
+        metadata="$artist"
     elif [[ -n "$title" ]]; then
-        metadata="%{F$color}$icon $title%{F-}"
+        metadata="$title"
     else
-        metadata="%{F$color}$icon Unknown%{F-}"
+        metadata="Unknown"
     fi
 
-    echo "$metadata"
+    if [[ ${#metadata} -gt $module_output_max_length ]]; then
+        metadata="${metadata:0:$module_output_max_length}..."
+    fi
+
+    echo "%{F$color}$icon $metadata%{F-}"
 }
 
 while true; do
