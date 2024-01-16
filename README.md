@@ -82,18 +82,19 @@ $ ./install.sh
 ## Keys
 | Command | Bind |
 | :------ | :--: |
-| Meta key | Win/Meta |
-| Lock session | meta+Esc |
-| Kill Xorg session | meta+Shift+Del |
-| Horizontal layout | meta+G |
-| Vertical layout | meta+V |
-| Move window | meta + h,j,k,l |
-| Resize active window | meta + y,u,i,o |
-| Floating mode switch for active window | meta+Ctrl+F |
-| Switch focus floating<->tiled | meta+Alt+F |
-| Screenshot (Selection to buffer) | PrtSc |
-| Screenshot (Selection to file) | meta+PrtSc |
-| Screenshot (Full desktop to file) | meta+Shift+PrtSc |
+| Meta key | Win / Meta |
+| Lock session | **meta** + <kbd>Esc</kbd> |
+| Kill Xorg session | **meta** + <kbd>Shift</kbd> + <kbd>Del</kbd> |
+| Horizontal layout | **meta** + <kbd>G</kbd> |
+| Vertical layout | **meta** + <kbd>V</kbd> |
+| Switch active window | **meta** + <kbd>h</kbd>,<kbd>j</kbd>,<kbd>k</kbd>,<kbd>l</kbd> |
+| Move active window | **meta** + Shift + <kbd>h</kbd>,<kbd>j</kbd>,<kbd>k</kbd>,<kbd>l</kbd> |
+| Resize active window | **meta** + <kbd>y</kbd>,<kbd>u</kbd>,<kbd>i</kbd>,<kbd>o</kbd> |
+| Floating mode switch for active window | **meta** + <kbd>Ctrl</kbd> + <kbd>F</kbd> |
+| Switch focus floating<->tiled | **meta** + <kbd>Alt</kbd> + <kbd>F</kbd> |
+| Screenshot (Selection to buffer) | <kbd>PrtSc</kbd> |
+| Screenshot (Selection to file) | **meta** + <kbd>PrtSc</kbd> |
+| Screenshot (Full desktop to file) | **meta** + <kbd>Shift</kbd> + <kbd>PrtSc</kbd> |
 | Display brightness | Fn keys |
 | Media playback | Fn keys |
 
