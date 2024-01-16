@@ -88,7 +88,7 @@ $ ./install.sh
 | Horizontal layout | **meta** + <kbd>G</kbd> |
 | Vertical layout | **meta** + <kbd>V</kbd> |
 | Switch active window | **meta** + <kbd>h</kbd>,<kbd>j</kbd>,<kbd>k</kbd>,<kbd>l</kbd> |
-| Move active window | **meta** + Shift + <kbd>h</kbd>,<kbd>j</kbd>,<kbd>k</kbd>,<kbd>l</kbd> |
+| Move active window | **meta** + <kbd>Shift</kbd> + <kbd>h</kbd>,<kbd>j</kbd>,<kbd>k</kbd>,<kbd>l</kbd> |
 | Resize active window | **meta** + <kbd>y</kbd>,<kbd>u</kbd>,<kbd>i</kbd>,<kbd>o</kbd> |
 | Floating mode switch for active window | **meta** + <kbd>Ctrl</kbd> + <kbd>F</kbd> |
 | Switch focus floating<->tiled | **meta** + <kbd>Alt</kbd> + <kbd>F</kbd> |
