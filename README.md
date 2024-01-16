@@ -59,14 +59,14 @@ $ ./install.sh
 
 
 ### Modified
-It is expected that you'll use **git** to make a new branch (`local` in this example) for applying the tweaks and commit all the changes in that branch. Follow the steps below to apply the updates to it.
+It is expected that you'll use **git** to make a new branch (`local` in this example) for applying the tweaks and commit all the changes to this `local` branch. Follow the steps below to apply the updates to it.
 
 1. Pull changes with **git** (`origin` - Expected to be the original repository, not forks):
 ```sh
 $ git pull origin
 ```
 
-2. Merge the remote `master` branch into `local` and resolve any merge conflicts:
+2. Merge the remote `master` branch into `local` and confirm the new merge-commit message:
 ```sh
 $ git merge origin/master local
 ```
@@ -104,7 +104,7 @@ This repository does not provide any keyboard layout configuration. It's expecte
 **Example configuration:**
   `/etc/X11/xinit/xinitrc.d/10-keyboard-layout.sh`
 ```sh
-##!/bin/sh
+#!/bin/sh
 
 setxkbmap -layout us,jp
 setxkbmap -option 'grp:win_space_toggle'
