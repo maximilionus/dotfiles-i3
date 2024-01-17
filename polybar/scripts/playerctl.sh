@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Check if playerctl is installed
+# Check if playerctl is installed and freeze the execution if command is not
+# available
 if ! command -v playerctl &> /dev/null; then
-    exit 1
+    read
 fi
 
 # Default module mode set here.
