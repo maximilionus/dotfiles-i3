@@ -128,8 +128,8 @@ Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinu
 | :------ | :---: |
 | Pause/Play | Left Mouse Button |
 | Switch simplified mode | Right Mouse Button |
-| Skip 10 seconds | Mouse Scroll Down |
-| Go 10 seconds back | Mouse Scroll Up |
+| Go next | Mouse Scroll Down |
+| Go previous | Mouse Scroll Up |
 
 
 ## Lock
