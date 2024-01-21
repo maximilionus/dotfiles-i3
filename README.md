@@ -18,14 +18,18 @@ Minimalistic and lightweight i3 window manager configuration
 - `playerctl` - unified MPRIS media playback control
 
 ### Fonts
-#### Families
+While the main font configuration is very flexible, it still requires the **Noto Sans** and **Noto Sans CJK** fonts as a fallback for some characters and should therefore be available on the system.
+
+
+## Fonts
+### Families
 This project uses 3 custom font families to assign the fonts. Any NerdFonts patched font will work (required mostly for the icons and powerline symbols).
 
 - `i3_font_main` - main font, used in i3wm itself
 - `i3_font_bar` - font for top bar (polybar, i3status, etc.)
 - `i3_font_launcher` - font for application launcher (rofi, dmenu, etc.)
 
-#### Configure
+### Configure
 The [installer script](./install.sh) will copy the font configuration from `fontconfig/*` to `~/.config/fontconfig/conf.d/` of the current user. Default configuration uses the **MesloLGSDZ Nerd Font** by default, but you are free to use whatever supported font you want.
 
 > **Note**  
@@ -119,8 +123,8 @@ setxkbmap -option 'grp:win_space_toggle'
 ## Modules
 This section contains detailed explanation for some custom components of this project.
 
-#### Polybar
-###### Playback control
+### Polybar
+##### Playback control
 Playback control uses the `playerctl` to work with [MPRIS](https://wiki.archlinux.org/title/MPRIS)-compliant applications. Module automatically fetches the current playback status and meta information and displays it in the status bar.
 
 **Controls:**
