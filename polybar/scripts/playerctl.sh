@@ -6,6 +6,10 @@ if ! command -v playerctl &> /dev/null; then
     read
 fi
 
+# Variables
+COLOR_ACTIVE="#7366F8"
+COLOR_INACTIVE="#808080"
+
 # Default module mode set here.
 # 0 - Full output
 # 1 - Simplified output, no metadata
@@ -68,9 +72,9 @@ while true; do
         fi
 
         if [[ $playerctl_status == "Playing" ]]; then
-            print_metadata "󰐊" "#7366F8" "$artist" "$title"
+            print_metadata "󰐊" "$COLOR_ACTIVE" "$artist" "$title"
         else
-            print_metadata "󰏤" "#808080" "$artist" "$title"
+            print_metadata "󰏤" "$COLOR_INACTIVE" "$artist" "$title"
         fi
     fi
 
