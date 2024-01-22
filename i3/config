@@ -226,11 +226,11 @@ bindsym $mod+Shift+Delete exec i3-msg exit
 #        status_command i3status
 #}
 
-# Increase window border size to round the corners with picom later
-default_border pixel 4
-
 # Enforce window borders for every window
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 3
+
+# Hide borders for one-window workspaces
+hide_edge_borders smart
 
 # Colors
 # class                 border  backgr. text    indicator child_border
