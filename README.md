@@ -4,18 +4,19 @@ Minimalistic and lightweight i3 window manager configuration
 
 ## Requirements
 ### Packages
-- `i3`- window manager **[required]**
-- `picom` - compositor
-- `polybar` - custom top bar
-- `rofi` - launcher
-- `dunst` - notifications daemon
-- `feh` - wallpaper utility
-- `brightnessctl` - control display brightness
-- `redshift` - adjusts the color temperature of screen
-- `thunar`, `thunar-volman`, `gvfs`, `gvfs-afc`, `gvfs-mtp` - lightweight gui file manager and daemon for automatic removable devices management
-- `maim`, `xclip` - screenshots, copy to clipboard
-- `unclutter` - auto-hide mouse cursor
-- `playerctl` - unified MPRIS media playback control
+- `i3`- Window manager **[required]**
+- `picom` - Compositor
+- `polybar` - Custom top bar
+- `rofi` - Launcher
+- `dunst` - Notifications daemon
+- `feh` - Wallpaper utility
+- `xss-lock` - Automatic session lock on suspend
+- `brightnessctl` - Control display brightness
+- `redshift` - Adjusts the color temperature of screen
+- `thunar`, `thunar-volman`, `gvfs`, `gvfs-afc`, `gvfs-mtp` - Lightweight gui file manager and daemon for automatic removable devices management
+- `maim`, `xclip` - Screenshots, copy to clipboard
+- `unclutter` - Auto-hide mouse cursor
+- `playerctl` - Unified MPRIS media playback control
 
 ### Fonts
 While the main font configuration is very flexible, it still requires the **Noto Sans** and **Noto Sans CJK** fonts as a fallback for some characters and should therefore be available on the system.
