@@ -1,0 +1,11 @@
+[Unit]
+Description=User suspend actions for picom compositor
+Before=sleep.target
+
+[Service]
+User=%I
+Type=oneshot
+ExecStart=/usr/bin/pkill picom
+
+[Install]
+WantedBy=sleep.target
