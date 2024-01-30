@@ -118,7 +118,15 @@ setxkbmap -option 'grp:win_space_toggle'
 
 
 ## Wallpaper
-**feh** will try to load any image placed on path `~/.local/share/wallpaper*` automatically on **i3** start.
+
+On the first launch, set the wallpaper with this command:
+```sh
+$ feh --bg-fill <PATH_TO_WALLPAPER>
+```
+
+And then **feh** will load the previous wallpaper automatically on each **i3** start, using the `~/.fehbg` script. Be aware, that the wallpaper file should always exist on the provided with `<PATH_TO_WALLPAPER>` path.
+
+To change the wallpaper you only need to execute the previous command with a new path.
 
 
 ## Modules

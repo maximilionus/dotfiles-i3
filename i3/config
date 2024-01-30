@@ -30,10 +30,8 @@ exec --no-startup-id thunar --daemon
 # Start notification daemon
 exec --no-startup-id dunst
 
-# Set background using feh
-# Background fetched from any supported by feh format on path
-# "~/.config/wallpaper*"
-exec --no-startup-id "feh --bg-fill ~/.local/share/wallpaper*"
+# Restore the previously set feh background
+exec --no-startup-id ~/.fehbg
 
 # Start compositor
 exec --no-startup-id picom
