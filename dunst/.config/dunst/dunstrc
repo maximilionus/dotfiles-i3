@@ -1,0 +1,40 @@
+[global]
+    follow = mouse
+
+    # Position the notification in the top right corner
+    origin = top-right
+
+    # dynamic width from arg 0 to 1
+    width = (300, 500)
+    height = (50, 300)
+
+    frame_color = "#5f5f5f"
+    background = "#282828"
+
+    corner_radius = 12
+
+    # Defines width in pixels of frame around the notification window.
+    frame_width = 1
+
+    # Maximum number of notification (0 means no limit)
+    notification_limit = 5
+
+    separator_color = frame
+
+    font = Inter 12
+
+
+[urgency_low]
+    foreground = "#f0f0f0"
+    timeout = 5
+
+[urgency_normal]
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    foreground = "#ffdddd"
+    timeout = 10
+
+[fullscreen_delay_everything]
+    fullscreen = pushback
