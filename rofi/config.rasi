@@ -1,6 +1,0 @@
-configuration {
-  modi: "window,drun,run,combi";
-  font: "i3_font_launcher 14";
-  combi-modi: "window,drun";
-}
-@theme "~/.config/rofi/themes/mxml.rasi"
