@@ -1,5 +1,6 @@
 # Variables
 set $mod Mod4
+set $modcode 133
 
 set $left h
 set $down j
@@ -19,38 +20,24 @@ set $statusbar $I3_SCRIPTS_DIR/statusbar.sh
 
 # Global font settings
 font pango:Inter 9
-output * subpixel none
 
 # Autostart
-exec mkdir -p $I3_RUNTIME_DIR
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gnome-keyring-daemon --start
-exec dunst
-exec playerctld daemon
+exec --no-startup-id mkdir -p $I3_RUNTIME_DIR
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-keyring-daemon --start
+exec --no-startup-id dunst
+exec --no-startup-id playerctld daemon
 
 # Output configuration
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper
 
 # Idle configuration
-exec swayidle -w before-sleep "sh $screenlock 1"
-exec $idle $screenlock
+#exec swayidle -w before-sleep "sh $screenlock 1"
+#exec $idle $screenlock
 
 # Input configuration
-input * {
-    xkb_layout "us,ru"
-    xkb_options "grp:win_space_toggle"
-}
-
-input type:pointer {
-    accel_profile "flat"
-}
-
-input type:touchpad {
-    tap enabled
-    drag_lock "disabled"
-    natural_scroll enabled
-    scroll_factor 0.4
-}
+exec --no-startup-id "setxkbmap -layout us,ru"
+exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
 
 # Key bindings
@@ -61,57 +48,57 @@ bindsym $mod+Return exec $term
 
 bindsym $mod+Shift+Return exec $exec_cwd $term
 
-bindsym $mod+Escape exec $screenlock
+#bindsym $mod+Escape exec $screenlock
 
-bindsym --to-code $mod+q kill
-bindsym --to-code $mod+Shift+q exec sh -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
+bindcode $modcode+q kill
+bindcode $modcode+Shift+q exec sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
 bindsym $mod+Tab exec $menu
 
-floating_modifier $mod normal
+#floating_modifier $mod normal
 
-bindsym --to-code $mod+Shift+c reload
+bindcode $modcode+Shift+c reload
 
-bindsym --to-code $mod+Delete exec $power_menu
+bindcode $modcode+Delete exec $power_menu
 
 ## Moving around:
-bindsym --to-code $mod+$left focus left
-bindsym --to-code $mod+$down focus down
-bindsym --to-code $mod+$up focus up
-bindsym --to-code $mod+$right focus right
+bindcode $modcode+$left focus left
+bindcode $modcode+$down focus down
+bindcode $modcode+$up focus up
+bindcode $modcode+$right focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym --to-code $mod+Shift+$left move left
-bindsym --to-code $mod+Shift+$down move down
-bindsym --to-code $mod+Shift+$up move up
-bindsym --to-code $mod+Shift+$right move right
+bindcode $modcode+Shift+$left move left
+bindcode $modcode+Shift+$down move down
+bindcode $modcode+Shift+$up move up
+bindcode $modcode+Shift+$right move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym --to-code $mod+y exec \
-    "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
-bindsym --to-code $mod+u exec \
-    "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
-bindsym --to-code $mod+i exec \
-    "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
-bindsym --to-code $mod+o exec \
-    "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
+bindcode $modcode+y exec \
+    "i3-msg resize grow left 10 px or 10 ppt || i3-msg resize shrink right 10 px or 10 ppt"
+bindcode $modcode+u exec \
+    "i3-msg resize grow down 10 px or 10 ppt || i3-msg resize shrink up 10 px or 10 ppt"
+bindcode $modcode+i exec \
+    "i3-msg resize grow up 10 px or 10 ppt || i3-msg resize shrink down 10 px or 10 ppt"
+bindcode $modcode+o exec \
+    "i3-msg resize grow right 10 px or 10 ppt || i3-msg resize shrink left 10 px or 10 ppt"
 
-bindsym --to-code $mod+Shift+y exec \
-    "swaymsg resize grow left 2 px or 2 ppt || swaymsg resize shrink right 2 px or 2 ppt"
-bindsym --to-code $mod+Shift+u exec \
-    "swaymsg resize grow down 2 px or 2 ppt || swaymsg resize shrink up 2 px or 2 ppt"
-bindsym --to-code $mod+Shift+i exec \
-    "swaymsg resize grow up 2 px or 2 ppt || swaymsg resize shrink down 2 px or 2 ppt"
-bindsym --to-code $mod+Shift+o exec \
-    "swaymsg resize grow right 2 px or 2 ppt || swaymsg resize shrink left 2 px or 2 ppt"
+bindcode $modcode+Shift+y exec \
+    "i3-msg resize grow left 2 px or 2 ppt || i3-msg resize shrink right 2 px or 2 ppt"
+bindcode $modcode+Shift+u exec \
+    "i3-msg resize grow down 2 px or 2 ppt || i3-msg resize shrink up 2 px or 2 ppt"
+bindcode $modcode+Shift+i exec \
+    "i3-msg resize grow up 2 px or 2 ppt || i3-msg resize shrink down 2 px or 2 ppt"
+bindcode $modcode+Shift+o exec \
+    "i3-msg resize grow right 2 px or 2 ppt || i3-msg resize shrink left 2 px or 2 ppt"
 
 ## Workspaces:
 bindsym $mod+F1 exec $workspacectl set-layer 1
@@ -147,40 +134,37 @@ bindsym $mod+Shift+8 exec $workspacectl move 8
 bindsym $mod+Shift+9 exec $workspacectl move 9
 bindsym $mod+Shift+0 exec $workspacectl move 10
 
-bindgesture swipe:right workspace prev
-bindgesture swipe:left workspace next
-
 ## Layout:
-bindsym --to-code $mod+g splith
-bindsym --to-code $mod+v splitv
-bindsym --to-code $mod+c split none
+bindcode $modcode+g splith
+bindcode $modcode+v splitv
+bindcode $modcode+c split none
 
-bindsym --to-code $mod+e layout toggle split
-bindsym --to-code $mod+w layout tabbed
-bindsym --to-code $mod+Shift+w layout stacking
+bindcode $modcode+e layout toggle split
+bindcode $modcode+w layout tabbed
+bindcode $modcode+Shift+w layout stacking
 
-bindsym --to-code $mod+m fullscreen
+bindcode $modcode+m fullscreen
 
-bindsym --to-code $mod+f floating toggle
+bindcode $modcode+f floating toggle
 
-bindsym --to-code $mod+s sticky toggle
+bindcode $modcode+s sticky toggle
 
 bindsym Alt+Tab focus mode_toggle
 
-bindsym --to-code $mod+a focus parent
+bindcode $modcode+a focus parent
 
 ## Scratchpad:
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Utilities:
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
 bindsym Shift+Print exec $screenshot
 bindsym Print exec $screenshot crop-to-clipboard
@@ -199,8 +183,6 @@ hide_edge_borders smart
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
-
-seat * hide_cursor 8000
 
 include $I3_CONFIG_DIR/theme/theme.conf
 

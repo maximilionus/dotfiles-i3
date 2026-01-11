@@ -1,10 +1,11 @@
 i3-wm
+jq
+feh
 dmenu
 dunst
 brightnessctl
 playerctl
 pavucontrol
-feh
 udisks2
 gnome-themes-extra
 gnome-keyring
