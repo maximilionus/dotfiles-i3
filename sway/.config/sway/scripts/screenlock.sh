@@ -8,6 +8,6 @@ swayidle \
     timeout $DISPLAY_TIMEOUT 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' &
 
-swaylock
+i3lock
 
 kill %%
