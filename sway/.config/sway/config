@@ -7,7 +7,7 @@ set $up k
 set $right l
 
 set $term foot
-set $menu wmenu-run -p "Execute"
+set $menu dmenu-run -p "Execute"
 
 set $exec_cwd $SWAY_SCRIPTS_DIR/exec-cwd.sh
 set $power_menu $SWAY_SCRIPTS_DIR/power-menu.sh

@@ -5,7 +5,7 @@ Suspend
 Reboot
 Logout"
 
-selected_option=$(echo "$OPTIONS" | wmenu -p "Select an option")
+selected_option=$(echo "$OPTIONS" | dmenu -p "Select an option")
 
 case "$selected_option" in
     Poweroff)

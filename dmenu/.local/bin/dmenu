@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+DMENU_ARGS=(-fn "Sans-serif 14" -i -nb "#080808" -nf "#ffffff" -sb "#ffffff" -sf "#000000")
+BIN_NAME=$(basename $0)
+
+
+if [[ "$BIN_NAME" != "dmenu" && "$BIN_NAME" != "dmenu_run" ]]; then
+    echo "Wrong basename"
+    exit 1
+fi
+
+exec /usr/bin/"$BIN_NAME" "${DMENU_ARGS[@]}" "${@}"
