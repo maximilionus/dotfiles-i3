@@ -4,6 +4,7 @@ dunst
 brightnessctl
 playerctl
 pavucontrol
+feh
 udisks2
 gnome-themes-extra
 gnome-keyring

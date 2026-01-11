@@ -29,7 +29,7 @@ exec dunst
 exec playerctld daemon
 
 # Output configuration
-output * bg ~/Pictures/wallpaper fill
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper
 
 # Idle configuration
 exec swayidle -w before-sleep "sh $screenlock 1"
