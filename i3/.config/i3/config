@@ -9,20 +9,20 @@ set $right l
 set $term foot
 set $menu dmenu-run -p "Execute"
 
-set $exec_cwd $SWAY_SCRIPTS_DIR/exec-cwd.sh
-set $power_menu $SWAY_SCRIPTS_DIR/power-menu.sh
-set $workspacectl $SWAY_SCRIPTS_DIR/workspacectl.sh
-set $idle $SWAY_SCRIPTS_DIR/idle.sh
-set $screenlock $SWAY_SCRIPTS_DIR/screenlock.sh
-set $screenshot $SWAY_SCRIPTS_DIR/screenshot.sh
-set $statusbar $SWAY_SCRIPTS_DIR/statusbar.sh
+set $exec_cwd $I3_SCRIPTS_DIR/exec-cwd.sh
+set $power_menu $I3_SCRIPTS_DIR/power-menu.sh
+set $workspacectl $I3_SCRIPTS_DIR/workspacectl.sh
+set $idle $I3_SCRIPTS_DIR/idle.sh
+set $screenlock $I3_SCRIPTS_DIR/screenlock.sh
+set $screenshot $I3_SCRIPTS_DIR/screenshot.sh
+set $statusbar $I3_SCRIPTS_DIR/statusbar.sh
 
 # Global font settings
 font pango:Inter 9
 output * subpixel none
 
 # Autostart
-exec mkdir -p $SWAY_RUNTIME_DIR
+exec mkdir -p $I3_RUNTIME_DIR
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec dunst
@@ -202,7 +202,7 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 
 seat * hide_cursor 8000
 
-include $SWAY_CONFIG_DIR/theme/theme.conf
+include $I3_CONFIG_DIR/theme/theme.conf
 
 # Status Bar
 bar {
@@ -230,4 +230,4 @@ client.urgent           $background_2 $background_2 $foreground_2 $accent       
 client.placeholder      $foreground_2 $background_1 $background_1 $background_2 $foreground_2
 
 include /etc/sway/config.d/*
-include $SWAY_CONFIG_DIR/config.d/*
+include $I3_CONFIG_DIR/config.d/*

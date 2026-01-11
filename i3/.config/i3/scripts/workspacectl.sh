@@ -2,8 +2,8 @@
 
 COMMAND="$1"
 COMMAND_2="$2"
-SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
-LAYER_FILE="$SWAY_STATE/workspace_layer"
+I3_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
+LAYER_FILE="$I3_STATE/workspace_layer"
 
 get_layer () {
     head -1 "$LAYER_FILE" 2>/dev/null || echo ""
@@ -20,7 +20,7 @@ case "$COMMAND" in
         ;;
     set-layer)
         notify="Workspace layer"
-        [[ ! -d "$SWAY_STATE" ]] && mkdir -p "$SWAY_STATE"
+        [[ ! -d "$I3_STATE" ]] && mkdir -p "$I3_STATE"
         if [[ "$COMMAND_2" == 0 ]]; then
             COMMAND_2=""
             notify="$notify unset"
