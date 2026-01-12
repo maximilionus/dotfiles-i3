@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-set $term xterm
+set $term kitty
 set $menu dmenu_run
 
 set $exec_cwd $I3_SCRIPTS_DIR/exec-cwd.sh
