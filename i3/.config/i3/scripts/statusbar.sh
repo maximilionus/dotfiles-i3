@@ -29,7 +29,7 @@ date_module=$(date +'%e  %a  %H:%M')
 # Keyboard
 keyboard_module="$KB_PREFIX"
 keyboard_module_fnc() {
-    keyboard_module="${keyboard_module}$(swaymsg -t get_inputs \
+    keyboard_module="${keyboard_module}$(i3-msg -t get_inputs \
         | jq -r '.[] | select(.type=="keyboard") | .xkb_active_layout_name' \
         | head -n1 \
         | cut -d' ' -f1 \
@@ -147,6 +147,7 @@ notifications_module_fnc() {
 notifications_module_fnc
 
 # Wakelock (always on mode)
+# TODO: Rewrite for i3
 wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
 wakelock_module_fnc() {
     local pid_file="$SWAY_RUNTIME_DIR/swayidle.pid"
@@ -158,7 +159,7 @@ wakelock_module_fnc() {
         wakelock_module=""
     fi
 }
-wakelock_module_fnc
+#wakelock_module_fnc
 
 # Formatted final output with proper margin
 # Margin... using spaces. Sorry not sorry :)

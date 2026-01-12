@@ -2,7 +2,7 @@
 
 COMMAND="$1"
 COMMAND_2="$2"
-I3_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
+I3_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/i3"
 LAYER_FILE="$I3_STATE/workspace_layer"
 
 get_layer () {
@@ -31,10 +31,10 @@ case "$COMMAND" in
         notify-send --urgency low --expire-time 500 "$notify"
         ;;
     set)
-        swaymsg workspace number "$(get_workspace $COMMAND_2)"
+        i3-msg workspace number "$(get_workspace $COMMAND_2)"
         ;;
     move)
-        swaymsg move container to workspace number "$(get_workspace $COMMAND_2)"
+        i3-msg move container to workspace number "$(get_workspace $COMMAND_2)"
         ;;
     *)
         echo "Unknown command"

@@ -7,8 +7,8 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
-set $menu dmenu-run -p "Execute"
+set $term xterm
+set $menu dmenu_run
 
 set $exec_cwd $I3_SCRIPTS_DIR/exec-cwd.sh
 set $power_menu $I3_SCRIPTS_DIR/power-menu.sh
@@ -23,6 +23,7 @@ font pango:Inter 9
 
 # Autostart
 exec --no-startup-id mkdir -p $I3_RUNTIME_DIR
+exec --no-startup-id picom
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start
 exec --no-startup-id dunst
@@ -44,60 +45,60 @@ exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 ## Basics:
 
 ### Start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec --no-startup-id $term
 
-bindsym $mod+Shift+Return exec $exec_cwd $term
+bindsym $mod+Shift+Return exec --no-startup-id $exec_cwd $term
 
-#bindsym $mod+Escape exec $screenlock
+bindsym $mod+Escape exec $screenlock
 
-bindcode $modcode+q kill
-bindcode $modcode+Shift+q exec sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
+bindsym $mod+q kill
+bindsym $mod+Shift+q exec sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
-bindsym $mod+Tab exec $menu
+bindsym $mod+Tab exec --no-startup-id $menu
 
 #floating_modifier $mod normal
 
-bindcode $modcode+Shift+c reload
+bindsym $mod+Shift+c reload
 
-bindcode $modcode+Delete exec $power_menu
+bindsym $mod+Delete exec $power_menu
 
 ## Moving around:
-bindcode $modcode+$left focus left
-bindcode $modcode+$down focus down
-bindcode $modcode+$up focus up
-bindcode $modcode+$right focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindcode $modcode+Shift+$left move left
-bindcode $modcode+Shift+$down move down
-bindcode $modcode+Shift+$up move up
-bindcode $modcode+Shift+$right move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindcode $modcode+y exec \
+bindsym $mod+y exec \
     "i3-msg resize grow left 10 px or 10 ppt || i3-msg resize shrink right 10 px or 10 ppt"
-bindcode $modcode+u exec \
+bindsym $mod+u exec \
     "i3-msg resize grow down 10 px or 10 ppt || i3-msg resize shrink up 10 px or 10 ppt"
-bindcode $modcode+i exec \
+bindsym $mod+i exec \
     "i3-msg resize grow up 10 px or 10 ppt || i3-msg resize shrink down 10 px or 10 ppt"
-bindcode $modcode+o exec \
+bindsym $mod+o exec \
     "i3-msg resize grow right 10 px or 10 ppt || i3-msg resize shrink left 10 px or 10 ppt"
 
-bindcode $modcode+Shift+y exec \
+bindsym $mod+Shift+y exec \
     "i3-msg resize grow left 2 px or 2 ppt || i3-msg resize shrink right 2 px or 2 ppt"
-bindcode $modcode+Shift+u exec \
+bindsym $mod+Shift+u exec \
     "i3-msg resize grow down 2 px or 2 ppt || i3-msg resize shrink up 2 px or 2 ppt"
-bindcode $modcode+Shift+i exec \
+bindsym $mod+Shift+i exec \
     "i3-msg resize grow up 2 px or 2 ppt || i3-msg resize shrink down 2 px or 2 ppt"
-bindcode $modcode+Shift+o exec \
+bindsym $mod+Shift+o exec \
     "i3-msg resize grow right 2 px or 2 ppt || i3-msg resize shrink left 2 px or 2 ppt"
 
 ## Workspaces:
@@ -135,23 +136,23 @@ bindsym $mod+Shift+9 exec $workspacectl move 9
 bindsym $mod+Shift+0 exec $workspacectl move 10
 
 ## Layout:
-bindcode $modcode+g splith
-bindcode $modcode+v splitv
-bindcode $modcode+c split none
+bindsym $mod+g splith
+bindsym $mod+v splitv
+bindsym $mod+c split none
 
-bindcode $modcode+e layout toggle split
-bindcode $modcode+w layout tabbed
-bindcode $modcode+Shift+w layout stacking
+bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout stacking
 
-bindcode $modcode+m fullscreen
+bindsym $mod+m fullscreen
 
-bindcode $modcode+f floating toggle
+bindsym $mod+f floating toggle
 
-bindcode $modcode+s sticky toggle
+bindsym $mod+s sticky toggle
 
 bindsym Alt+Tab focus mode_toggle
 
-bindcode $modcode+a focus parent
+bindsym $mod+a focus parent
 
 ## Scratchpad:
 bindsym $mod+Shift+minus move scratchpad
@@ -181,18 +182,22 @@ bindsym $mod+Next output * dpms off
 default_border pixel 2
 hide_edge_borders smart
 
-for_window [class=".*"] inhibit_idle fullscreen
-for_window [app_id=".*"] inhibit_idle fullscreen
-
-include $I3_CONFIG_DIR/theme/theme.conf
+#include $I3_CONFIG_DIR/theme/theme.conf
+# Colors, temporary include since above doesn't work (TODO)
+set $background_1 #000000
+set $background_2 #080808
+set $background_3 #484848
+set $foreground_1 #FFFFFF
+set $foreground_2 #CFCFCF
+set $foreground_3 #9F9F9F
+set $accent       #4A8BE3
 
 # Status Bar
 bar {
     position top
-    pango_markup enabled
-    tray_padding 4
 
-    status_command while true; do $statusbar; sleep 1; done
+    #status_command while true; do $statusbar; sleep 1; done
+    status_command i3status
 
     colors {
         statusline         $foreground_1
@@ -211,5 +216,5 @@ client.unfocused        $background_1 $background_1 $foreground_2 $accent       
 client.urgent           $background_2 $background_2 $foreground_2 $accent       $background_2
 client.placeholder      $foreground_2 $background_1 $background_1 $background_2 $foreground_2
 
-include /etc/sway/config.d/*
+include /etc/i3/config.d/*
 include $I3_CONFIG_DIR/config.d/*
