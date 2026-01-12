@@ -40,10 +40,15 @@ keyboard_module_fnc
 # Audio
 audio_module=""
 audio_module_fnc() {
-    audio_pipewire=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-    audio_module=$(echo "$audio_pipewire" | awk '{print $2*100}')
-    audio_module=$(echo "$audio_pipewire" | grep -q MUTED \
-        && echo "$VOLUME_PREFIX Muted" || echo "$VOLUME_PREFIX $audio_module%")
+    local vol mute
+    vol=$(pactl get-sink-volume "@DEFAULT_SINK@" | awk -F'/' 'NR==1 {gsub(/ /,"",$2); print $2}')
+    mute=$(pactl get-sink-mute "@DEFAULT_SINK@" | awk '{print $2}')
+
+    if [ "$mute" = "yes" ]; then
+        audio_module="$VOLUME_PREFIX Muted"
+    else
+        audio_module="$VOLUME_PREFIX $vol"
+    fi
 }
 audio_module_fnc
 
