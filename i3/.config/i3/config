@@ -61,42 +61,42 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Delete exec $power_menu
 
 ## Moving around:
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindcode $mod+43 focus left
+bindcode $mod+44 focus down
+bindcode $mod+45 focus up
+bindcode $mod+46 focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindcode $mod+Shift+43 move left
+bindcode $mod+Shift+44 move down
+bindcode $mod+Shift+45 move up
+bindcode $mod+Shift+46 move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+y exec \
+bindcode $mod+29 exec \
     "i3-msg resize grow left 10 px or 10 ppt || i3-msg resize shrink right 10 px or 10 ppt"
-bindsym $mod+u exec \
+bindcode $mod+30 exec \
     "i3-msg resize grow down 10 px or 10 ppt || i3-msg resize shrink up 10 px or 10 ppt"
-bindsym $mod+i exec \
+bindcode $mod+31 exec \
     "i3-msg resize grow up 10 px or 10 ppt || i3-msg resize shrink down 10 px or 10 ppt"
-bindsym $mod+o exec \
+bindcode $mod+32 exec \
     "i3-msg resize grow right 10 px or 10 ppt || i3-msg resize shrink left 10 px or 10 ppt"
 
-bindsym $mod+Shift+y exec \
+bindcode $mod+Shift+29 exec \
     "i3-msg resize grow left 2 px or 2 ppt || i3-msg resize shrink right 2 px or 2 ppt"
-bindsym $mod+Shift+u exec \
+bindcode $mod+Shift+30 exec \
     "i3-msg resize grow down 2 px or 2 ppt || i3-msg resize shrink up 2 px or 2 ppt"
-bindsym $mod+Shift+i exec \
+bindcode $mod+Shift+31 exec \
     "i3-msg resize grow up 2 px or 2 ppt || i3-msg resize shrink down 2 px or 2 ppt"
-bindsym $mod+Shift+o exec \
+bindcode $mod+Shift+32 exec \
     "i3-msg resize grow right 2 px or 2 ppt || i3-msg resize shrink left 2 px or 2 ppt"
 
 ## Workspaces:
@@ -134,22 +134,22 @@ bindsym $mod+Shift+9 exec $workspacectl move 9
 bindsym $mod+Shift+0 exec $workspacectl move 10
 
 ## Layout:
-bindsym $mod+g splith
-bindsym $mod+v splitv
+bindcode $mod+42 splith
+bindcode $mod+55 splitv
 
-bindsym $mod+e layout toggle split
-bindsym $mod+w layout tabbed
-bindsym $mod+Shift+w layout stacking
+bindcode $mod+26 layout toggle split
+bindcode $mod+25 layout tabbed
+bindcode $mod+Shift+25 layout stacking
 
-bindsym $mod+m fullscreen
+bindcode $mod+58 fullscreen
 
-bindsym $mod+f floating toggle
+bindcode $mod+41 floating toggle
 
-bindsym $mod+s sticky toggle
+bindcode $mod+39 sticky toggle
 
-bindsym Alt+Tab focus mode_toggle
+bindcode 64+23 focus mode_toggle
 
-bindsym $mod+a focus parent
+bindcode $mod+38 focus parent
 
 ## Scratchpad:
 bindsym $mod+Shift+minus move scratchpad
@@ -171,9 +171,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-bindsym $mod+Prior output * dpms on
-bindsym $mod+Next output * dpms off
 
 ## Style:
 default_border pixel 2
@@ -210,5 +207,3 @@ client.focused_inactive $background_2 $background_2 $foreground_2 $background_2 
 client.unfocused        $background_1 $background_1 $foreground_2 $accent       $background_2
 client.urgent           $background_2 $background_2 $foreground_2 $accent       $background_2
 client.placeholder      $foreground_2 $background_1 $background_1 $background_2 $foreground_2
-
-#include $I3_CONFIG_DIR/config.d/*

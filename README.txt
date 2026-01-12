@@ -42,5 +42,3 @@ EXTENDED CONTROLS
     Cancel tile split                        - mod + c
     Screenshot (Selection to clibboard)      - PrntScr
     Screenshot (Active screen to file)       - Shift + PrntScr
-    Turn display power off                   - mod + PgDown
-    Turn display power on                    - mod + PgUp
