@@ -1,6 +1,5 @@
 # Variables
 set $mod Mod4
-set $modcode 133
 
 set $left h
 set $down j
@@ -110,7 +109,7 @@ bindsym $mod+F6 exec $workspacectl set-layer 6
 bindsym $mod+F7 exec $workspacectl set-layer 7
 bindsym $mod+F8 exec $workspacectl set-layer 8
 bindsym $mod+F9 exec $workspacectl set-layer 9
-bindsym $mod+Grave exec $workspacectl set-layer 0
+bindcode $mod+49 exec $workspacectl set-layer 0
 
 bindsym $mod+1 exec $workspacectl set 1
 bindsym $mod+2 exec $workspacectl set 2
