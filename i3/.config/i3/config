@@ -33,8 +33,8 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpaper
 
 # Idle configuration
-#exec swayidle -w before-sleep "sh $screenlock 1"
-#exec $idle $screenlock
+exec_always --no-startup-id xset +dpms dpms 0 300 300
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- $screenlock
 
 # Input configuration
 exec --no-startup-id "setxkbmap -layout us,ru"
@@ -193,8 +193,8 @@ set $accent       #4A8BE3
 bar {
     position top
 
-    #status_command while true; do $statusbar; sleep 1; done
-    status_command i3status
+    status_command while true; do $statusbar; sleep 1; done
+    #status_command i3status
 
     colors {
         statusline         $foreground_1

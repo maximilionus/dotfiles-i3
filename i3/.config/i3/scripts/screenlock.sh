@@ -2,12 +2,10 @@
 #
 # Immediately launch the lockscreen, turning off the display after the timeout
 
-DISPLAY_TIMEOUT="${1:-10}"
+set -e
 
-swayidle \
-    timeout $DISPLAY_TIMEOUT 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"' &
-
-i3lock
-
-kill %%
+xset +dpms dpms 10 10 10
+i3lock --nofork --show-keyboard-layout --show-failed-attempts \
+       --ignore-empty-password \
+       --image="$HOME/Pictures/wallpaper" --color "#181818"
+xset dpms 300 300 300
