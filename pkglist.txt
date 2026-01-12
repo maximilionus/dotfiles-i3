@@ -1,3 +1,6 @@
+xorg-server
+xorg-xinit
+xorg-xev
 i3-wm
 xclip
 jq
@@ -7,6 +10,7 @@ dunst
 brightnessctl
 playerctl
 pavucontrol
+xdg-desktop-portal-gtk
 udisks2
 gnome-themes-extra
 gnome-keyring
