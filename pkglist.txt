@@ -11,6 +11,7 @@ feh
 dmenu
 dunst
 libnotify
+maim
 udisks2
 playerctl
 pavucontrol
