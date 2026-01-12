@@ -3,8 +3,7 @@
 # Do not update the status bar when the screen is locked.
 if pgrep -x i3lock > /dev/null; then exit 0; fi
 
-SPLITTER=
-# SPLITTER="<span foreground=\"gray\">|</span>"
+SPLITTER="  "
 
 KB_PREFIX="LANG "
 VOLUME_PREFIX="VOL "
@@ -27,6 +26,7 @@ WAKELOCK_ACTIVE="Lock"
 date_module=$(date +'%e %a %H:%M')
 
 # Keyboard
+# TODO: Fix for X11
 keyboard_module="$KB_PREFIX"
 keyboard_module_fnc() {
     keyboard_module="${keyboard_module}$(i3-msg -t get_inputs \
@@ -38,17 +38,17 @@ keyboard_module_fnc() {
 #keyboard_module_fnc
 
 # Audio
-audio_module=""
+audio_module="$VOLUME_PREFIX"
 audio_module_fnc() {
     local vol mute
-    vol=$(pactl get-sink-volume "@DEFAULT_SINK@" | awk -F'/' 'NR==1 {gsub(/ /,"",$2); print $2}')
     mute=$(pactl get-sink-mute "@DEFAULT_SINK@" | awk '{print $2}')
 
-    if [ "$mute" = "yes" ]; then
-        audio_module="$VOLUME_PREFIX Muted"
-    else
-        audio_module="$VOLUME_PREFIX $vol"
+    if [[ "$mute" = "yes" ]]; then
+        audio_module="$audio_module Muted"
+        return
     fi
+    vol=$(pactl get-sink-volume "@DEFAULT_SINK@" | awk -F'/' 'NR==1 {gsub(/ /,"",$2); print $2}')
+    audio_module="$audio_module $vol"
 }
 audio_module_fnc
 
@@ -164,14 +164,14 @@ wakelock_module_fnc
 # Margin... using spaces. Sorry not sorry :)
 modules=()
 
-[[ -n "$wakelock_module" ]]      && modules+=(" $SPLITTER $wakelock_module")
-[[ -n "$notifications_module" ]] && modules+=(" $SPLITTER $notifications_module")
-[[ -n "$backlight_module" ]]     && modules+=(" $SPLITTER $backlight_module")
-[[ -n "$battery_module" ]]       && modules+=(" $SPLITTER $battery_module")
-[[ -n "$bluetooth_module" ]]     && modules+=(" $SPLITTER $bluetooth_module")
-[[ -n "$network_module" ]]       && modules+=(" $SPLITTER $network_module")
-[[ -n "$audio_module" ]]         && modules+=(" $SPLITTER $audio_module")
-[[ -n "$keyboard_module" ]]      && modules+=(" $SPLITTER $keyboard_module")
-[[ -n "$date_module" ]]          && modules+=(" $SPLITTER $date_module")
+[[ -n "$wakelock_module" ]]      && modules+=("${SPLITTER}$wakelock_module")
+[[ -n "$notifications_module" ]] && modules+=("${SPLITTER}$notifications_module")
+[[ -n "$backlight_module" ]]     && modules+=("${SPLITTER}$backlight_module")
+[[ -n "$battery_module" ]]       && modules+=("${SPLITTER}$battery_module")
+[[ -n "$bluetooth_module" ]]     && modules+=("${SPLITTER}$bluetooth_module")
+[[ -n "$network_module" ]]       && modules+=("${SPLITTER}$network_module")
+[[ -n "$audio_module" ]]         && modules+=("${SPLITTER}$audio_module")
+#[[ -n "$keyboard_module" ]]      && modules+=("${SPLITTER}$keyboard_module")
+[[ -n "$date_module" ]]          && modules+=("${SPLITTER}$date_module")
 
-echo "${modules[*]}   $SPLITTER  "
+echo "${modules[*]}$SPLITTER"
