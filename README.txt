@@ -1,4 +1,4 @@
-Personal configuration for Sway Window Manager and other components.
+Personal configuration for i3 Window Manager and other components.
 
 USAGE
     This configuration is intended to be used on Arch Linux.
@@ -16,11 +16,6 @@ NOTES
 
     Wallpaper is automatically loaded from this path:
         ~/Pictures/wallpaper
-
-    You can also add modular configurations to Sway by putting the .conf files
-    in:
-        ~/.config/i3/config.d/
-
 
 EXTENDED CONTROLS
     Mod key (mod)                            - Meta (Win)

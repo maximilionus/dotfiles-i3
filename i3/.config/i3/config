@@ -216,5 +216,4 @@ client.unfocused        $background_1 $background_1 $foreground_2 $accent       
 client.urgent           $background_2 $background_2 $foreground_2 $accent       $background_2
 client.placeholder      $foreground_2 $background_1 $background_1 $background_2 $foreground_2
 
-include /etc/i3/config.d/*
-include $I3_CONFIG_DIR/config.d/*
+#include $I3_CONFIG_DIR/config.d/*
