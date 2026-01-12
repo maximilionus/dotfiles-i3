@@ -10,6 +10,7 @@ xclip
 feh
 dmenu
 dunst
+libnotify
 udisks2
 playerctl
 pavucontrol
