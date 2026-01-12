@@ -6,25 +6,25 @@ if pgrep -x i3lock > /dev/null; then exit 0; fi
 SPLITTER=
 # SPLITTER="<span foreground=\"gray\">|</span>"
 
-KB_PREFIX="<span weight=\"bold\">LANG</span> "
-VOLUME_PREFIX="<span weight=\"bold\">VOL</span> "
-BATTERY_PREFIX="<span weight=\"bold\">BAT</span> "
-BACKLIGHT_PREFIX="<span weight=\"bold\">B</span> "
-NET_PREFIX="<span weight=\"bold\">NET</span>"
+KB_PREFIX="LANG "
+VOLUME_PREFIX="VOL "
+BATTERY_PREFIX="BAT "
+BACKLIGHT_PREFIX="B "
+NET_PREFIX="NET"
 NET_LAN="Eth"
 NET_WIFI="WiFi"
 NET_BRIDGE="Bridge"
 NET_TUN="Tunnel"
 NET_DOWN="Offline"
-BLUETOOTH_PREFIX="<span weight=\"bold\">BT</span>"
+BLUETOOTH_PREFIX="BT"
 BLUETOOTH_CONNECTED="Con"
-NOTIFICATIONS_PREFIX="<span weight=\"bold\">NOTIF</span>"
+NOTIFICATIONS_PREFIX="NOTIF"
 NOTIFICATIONS_MUTED="Silent"
-WAKELOCK_PREFIX="<span weight=\"bold\">WAKE</span>"
+WAKELOCK_PREFIX="WAKE"
 WAKELOCK_ACTIVE="Lock"
 
 # Date
-date_module=$(date +'%e  %a  %H:%M')
+date_module=$(date +'%e %a %H:%M')
 
 # Keyboard
 keyboard_module="$KB_PREFIX"
@@ -35,7 +35,7 @@ keyboard_module_fnc() {
         | cut -d' ' -f1 \
         | cut -c1-2)"
 }
-keyboard_module_fnc
+#keyboard_module_fnc
 
 # Audio
 audio_module=""
@@ -152,32 +152,26 @@ notifications_module_fnc() {
 notifications_module_fnc
 
 # Wakelock (always on mode)
-# TODO: Rewrite for i3
 wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
 wakelock_module_fnc() {
-    local pid_file="$SWAY_RUNTIME_DIR/swayidle.pid"
-
-    [[ ! -f "$pid_file" ]] && return 0
-
-    local pid="$(cat $pid_file)"
-    if ps -p $pid > /dev/null; then
+    if ! xset q | grep -q "DPMS is Disabled"; then
         wakelock_module=""
     fi
 }
-#wakelock_module_fnc
+wakelock_module_fnc
 
 # Formatted final output with proper margin
 # Margin... using spaces. Sorry not sorry :)
 modules=()
 
-[[ -n "$wakelock_module" ]]      && modules+=("  $SPLITTER  $wakelock_module")
-[[ -n "$notifications_module" ]] && modules+=("  $SPLITTER  $notifications_module")
-[[ -n "$backlight_module" ]]     && modules+=("  $SPLITTER  $backlight_module")
-[[ -n "$battery_module" ]]       && modules+=("  $SPLITTER  $battery_module")
-[[ -n "$bluetooth_module" ]]     && modules+=("  $SPLITTER  $bluetooth_module")
-[[ -n "$network_module" ]]       && modules+=("  $SPLITTER  $network_module")
-[[ -n "$audio_module" ]]         && modules+=("  $SPLITTER  $audio_module")
-[[ -n "$keyboard_module" ]]      && modules+=("  $SPLITTER  $keyboard_module")
-[[ -n "$date_module" ]]          && modules+=("  $SPLITTER  $date_module")
+[[ -n "$wakelock_module" ]]      && modules+=(" $SPLITTER $wakelock_module")
+[[ -n "$notifications_module" ]] && modules+=(" $SPLITTER $notifications_module")
+[[ -n "$backlight_module" ]]     && modules+=(" $SPLITTER $backlight_module")
+[[ -n "$battery_module" ]]       && modules+=(" $SPLITTER $battery_module")
+[[ -n "$bluetooth_module" ]]     && modules+=(" $SPLITTER $bluetooth_module")
+[[ -n "$network_module" ]]       && modules+=(" $SPLITTER $network_module")
+[[ -n "$audio_module" ]]         && modules+=(" $SPLITTER $audio_module")
+[[ -n "$keyboard_module" ]]      && modules+=(" $SPLITTER $keyboard_module")
+[[ -n "$date_module" ]]          && modules+=(" $SPLITTER $date_module")
 
 echo "${modules[*]}   $SPLITTER  "
