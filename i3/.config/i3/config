@@ -35,10 +35,6 @@ exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpaper
 exec --no-startup-id xset +dpms dpms 0 300 300
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $screenlock
 
-# Input configuration
-exec_always --no-startup-id "setxkbmap -layout us,ru"
-exec_always --no-startup-id "setxkbmap -option grp:win_space_toggle"
-
 # Key bindings
 ## Basics:
 
