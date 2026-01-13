@@ -169,8 +169,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 ## Style:
-default_border pixel 2
+for_window [class=".*"] border pixel 2
 hide_edge_borders smart
+
 
 set $background_1 #000000
 set $background_2 #080808
