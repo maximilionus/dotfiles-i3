@@ -18,6 +18,6 @@ case "$selected_option" in
         systemctl reboot
         ;;
     Logout)
-        swaymsg exit
+        i3 exit
         ;;
 esac
