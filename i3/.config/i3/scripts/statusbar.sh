@@ -3,7 +3,7 @@
 # Do not update the status bar when the screen is locked.
 if pgrep -x i3lock > /dev/null; then exit 0; fi
 
-SPLITTER="  "
+SPLITTER="    "
 
 KB_PREFIX="LANG "
 VOLUME_PREFIX="VOL "
