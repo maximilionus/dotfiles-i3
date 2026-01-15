@@ -44,10 +44,10 @@ bindsym $mod+Return exec --no-startup-id $term
 
 bindsym $mod+Shift+Return exec --no-startup-id $exec_cwd $term
 
-bindsym $mod+Escape exec $screenlock
+bindsym $mod+Escape exec --no-startup-id $screenlock
 
 bindsym $mod+q kill
-bindsym $mod+Shift+q exec sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
+bindsym $mod+Shift+q exec --no-startup-id sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
 bindsym $mod+Tab exec --no-startup-id $menu
 
@@ -55,7 +55,7 @@ floating_modifier $mod
 
 bindsym $mod+Shift+c reload
 
-bindsym $mod+Delete exec $power_menu
+bindsym $mod+Delete exec --no-startup-id $power_menu
 
 ## Moving around:
 bindcode $mod+43 focus left
@@ -78,57 +78,57 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindcode $mod+29 exec \
+bindcode $mod+29 exec --no-startup-id \
     "i3-msg resize grow left 10 px or 10 ppt || i3-msg resize shrink right 10 px or 10 ppt"
-bindcode $mod+30 exec \
+bindcode $mod+30 exec --no-startup-id \
     "i3-msg resize grow down 10 px or 10 ppt || i3-msg resize shrink up 10 px or 10 ppt"
-bindcode $mod+31 exec \
+bindcode $mod+31 exec --no-startup-id \
     "i3-msg resize grow up 10 px or 10 ppt || i3-msg resize shrink down 10 px or 10 ppt"
-bindcode $mod+32 exec \
+bindcode $mod+32 exec --no-startup-id \
     "i3-msg resize grow right 10 px or 10 ppt || i3-msg resize shrink left 10 px or 10 ppt"
 
-bindcode $mod+Shift+29 exec \
+bindcode $mod+Shift+29 exec --no-startup-id \
     "i3-msg resize grow left 2 px or 2 ppt || i3-msg resize shrink right 2 px or 2 ppt"
-bindcode $mod+Shift+30 exec \
+bindcode $mod+Shift+30 exec --no-startup-id \
     "i3-msg resize grow down 2 px or 2 ppt || i3-msg resize shrink up 2 px or 2 ppt"
-bindcode $mod+Shift+31 exec \
+bindcode $mod+Shift+31 exec --no-startup-id \
     "i3-msg resize grow up 2 px or 2 ppt || i3-msg resize shrink down 2 px or 2 ppt"
-bindcode $mod+Shift+32 exec \
+bindcode $mod+Shift+32 exec --no-startup-id \
     "i3-msg resize grow right 2 px or 2 ppt || i3-msg resize shrink left 2 px or 2 ppt"
 
 ## Workspaces:
-bindsym $mod+F1 exec $workspacectl set-layer 1
-bindsym $mod+F2 exec $workspacectl set-layer 2
-bindsym $mod+F3 exec $workspacectl set-layer 3
-bindsym $mod+F4 exec $workspacectl set-layer 4
-bindsym $mod+F5 exec $workspacectl set-layer 5
-bindsym $mod+F6 exec $workspacectl set-layer 6
-bindsym $mod+F7 exec $workspacectl set-layer 7
-bindsym $mod+F8 exec $workspacectl set-layer 8
-bindsym $mod+F9 exec $workspacectl set-layer 9
-bindcode $mod+49 exec $workspacectl set-layer 0
+bindsym $mod+F1 exec --no-startup-id $workspacectl set-layer 1
+bindsym $mod+F2 exec --no-startup-id $workspacectl set-layer 2
+bindsym $mod+F3 exec --no-startup-id $workspacectl set-layer 3
+bindsym $mod+F4 exec --no-startup-id $workspacectl set-layer 4
+bindsym $mod+F5 exec --no-startup-id $workspacectl set-layer 5
+bindsym $mod+F6 exec --no-startup-id $workspacectl set-layer 6
+bindsym $mod+F7 exec --no-startup-id $workspacectl set-layer 7
+bindsym $mod+F8 exec --no-startup-id $workspacectl set-layer 8
+bindsym $mod+F9 exec --no-startup-id $workspacectl set-layer 9
+bindcode $mod+49 exec --no-startup-id $workspacectl set-layer 0
 
-bindsym $mod+1 exec $workspacectl set 1
-bindsym $mod+2 exec $workspacectl set 2
-bindsym $mod+3 exec $workspacectl set 3
-bindsym $mod+4 exec $workspacectl set 4
-bindsym $mod+5 exec $workspacectl set 5
-bindsym $mod+6 exec $workspacectl set 6
-bindsym $mod+7 exec $workspacectl set 7
-bindsym $mod+8 exec $workspacectl set 8
-bindsym $mod+9 exec $workspacectl set 9
-bindsym $mod+0 exec $workspacectl set 10
+bindsym $mod+1 exec --no-startup-id $workspacectl set 1
+bindsym $mod+2 exec --no-startup-id $workspacectl set 2
+bindsym $mod+3 exec --no-startup-id $workspacectl set 3
+bindsym $mod+4 exec --no-startup-id $workspacectl set 4
+bindsym $mod+5 exec --no-startup-id $workspacectl set 5
+bindsym $mod+6 exec --no-startup-id $workspacectl set 6
+bindsym $mod+7 exec --no-startup-id $workspacectl set 7
+bindsym $mod+8 exec --no-startup-id $workspacectl set 8
+bindsym $mod+9 exec --no-startup-id $workspacectl set 9
+bindsym $mod+0 exec --no-startup-id $workspacectl set 10
 
-bindsym $mod+Shift+1 exec $workspacectl move 1
-bindsym $mod+Shift+2 exec $workspacectl move 2
-bindsym $mod+Shift+3 exec $workspacectl move 3
-bindsym $mod+Shift+4 exec $workspacectl move 4
-bindsym $mod+Shift+5 exec $workspacectl move 5
-bindsym $mod+Shift+6 exec $workspacectl move 6
-bindsym $mod+Shift+7 exec $workspacectl move 7
-bindsym $mod+Shift+8 exec $workspacectl move 8
-bindsym $mod+Shift+9 exec $workspacectl move 9
-bindsym $mod+Shift+0 exec $workspacectl move 10
+bindsym $mod+Shift+1 exec --no-startup-id $workspacectl move 1
+bindsym $mod+Shift+2 exec --no-startup-id $workspacectl move 2
+bindsym $mod+Shift+3 exec --no-startup-id $workspacectl move 3
+bindsym $mod+Shift+4 exec --no-startup-id $workspacectl move 4
+bindsym $mod+Shift+5 exec --no-startup-id $workspacectl move 5
+bindsym $mod+Shift+6 exec --no-startup-id $workspacectl move 6
+bindsym $mod+Shift+7 exec --no-startup-id $workspacectl move 7
+bindsym $mod+Shift+8 exec --no-startup-id $workspacectl move 8
+bindsym $mod+Shift+9 exec --no-startup-id $workspacectl move 9
+bindsym $mod+Shift+0 exec --no-startup-id $workspacectl move 10
 
 ## Layout:
 bindcode $mod+42 splith
@@ -153,21 +153,21 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Utilities:
-bindsym XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
 
-bindsym Shift+Print exec $screenshot
-bindsym Print exec $screenshot crop-to-clipboard
+bindsym Shift+Print exec --no-startup-id $screenshot
+bindsym Print exec --no-startup-id $screenshot crop-to-clipboard
 
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ## Style:
 for_window [class=".*"] border pixel 2
