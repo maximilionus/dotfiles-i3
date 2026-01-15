@@ -1,21 +1,21 @@
 Personal configuration for i3 Window Manager and other components.
 
-USAGE
-    This configuration is intended to be used on Arch Linux.
+This configuration is intended to be used on Arch Linux.
 
-    To apply it, firstly install all the required packages:
-        # cat pkglist.txt | pacman -S --needed -
+To apply it, firstly install all the required packages:
+    # cat pkglist.txt | pacman -S --needed -
 
-    After that, apply the configurations using GNU Stow:
-        $ stow <dir>
+After that, apply the configurations using GNU Stow:
+    $ stow <dir>
 
-NOTES
-    These configurations are very heavily reliant on the main dotfiles
-    repository and will not work properly if the user shell is not Zsh and don't
-    have the zsh dotfiles already installed.
 
-    Wallpaper is automatically loaded from this path:
-        ~/Pictures/wallpaper
+Configurations here are very heavily reliant on the main dotfiles repository and
+will not work properly on non-zsh shell and without the following modules:
+    zsh
+    x11-xinit-modular-xresources
+
+Wallpaper is automatically loaded from this path:
+    ~/Pictures/wallpaper
 
 EXTENDED CONTROLS
     Mod key (mod)                            - Meta (Win)
