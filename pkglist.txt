@@ -1,6 +1,5 @@
 xorg-server
 xorg-xinit
-xsettingsd
 xorg-xset
 xorg-xev
 i3-wm
@@ -20,5 +19,6 @@ brightnessctl
 polkit-gnome
 gnome-keyring
 gnome-themes-extra
+gnome-settings-daemon
 xdg-desktop-portal-gtk
 inter-font

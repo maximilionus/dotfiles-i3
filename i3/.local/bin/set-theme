@@ -12,11 +12,6 @@ set_gsettings_theme () {
 
     gsettings set org.gnome.desktop.interface color-scheme "$color_scheme"
     gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
-
-    # x11 specific theme hook
-    sed -i "s|\(Net/ThemeName[[:space:]]*\"\)[^\"]*\"|\1${gtk_theme}\"|" \
-        "$HOME/.config/xsettingsd/xsettingsd.conf"
-    systemctl restart --user xsettingsd.service
 }
 
 case "$1" in
