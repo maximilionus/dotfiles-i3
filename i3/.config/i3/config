@@ -22,9 +22,10 @@ font pango:Inter 9
 
 # Autostart
 exec --no-startup-id mkdir -p $I3_RUNTIME_DIR
-exec --no-startup-id picom
+exec --no-startup-id systemctl start --user xsettingsd.service
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start
+exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id playerctld daemon
 
