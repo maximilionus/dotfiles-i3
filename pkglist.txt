@@ -3,6 +3,7 @@ xorg-xinit
 xorg-xset
 xorg-xev
 i3-wm
+picom
 xss-lock
 i3lock
 jq
