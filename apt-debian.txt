@@ -1,6 +1,7 @@
 xserver-xorg
 xinit
 i3-wm
+picom
 xss-lock
 i3lock
 jq
