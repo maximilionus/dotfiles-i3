@@ -18,6 +18,7 @@ brightnessctl
 libglib2.0-bin
 gnome-keyring
 gnome-themes-extra
+dbus-x11
 gnome-settings-daemon
 xdg-desktop-portal
 xdg-desktop-portal-gtk
