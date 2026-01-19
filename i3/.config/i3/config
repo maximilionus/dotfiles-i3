@@ -33,6 +33,7 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpaper
 
 # Idle configuration
+exec --no-startup-id xset s off
 exec --no-startup-id xset +dpms dpms \
     $X11_SCREENLOCK_TIMEOUT $X11_SCREENLOCK_TIMEOUT $X11_SCREENLOCK_TIMEOUT
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $screenlock
