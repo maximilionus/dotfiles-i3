@@ -9,7 +9,12 @@ crop-to-clipboard() {
     notify-send --urgency low "Screenshot (Selection)" "Copied to clipboard"
 }
 
-fullscreen() {
+fullscreen-to-clipboard() {
+    maim --hidecursor | xclip -selection clipboard -t image/png
+    notify-send --urgency low "Screenshot (Fullscreen)" "Copied to clipboard"
+}
+
+fullscreen-to-file() {
     img_path="$SCREENSHOTS_PATH/screenshot-$(date +%Y%m%d-%H%M%S).png"
 
     maim --hidecursor "$img_path"
@@ -20,7 +25,10 @@ case "$1" in
     crop-to-clipboard)
         crop-to-clipboard
         ;;
+    *|fullscreen-to-clipboard)
+        fullscreen-to-clipboard
+        ;;
     *|fullscreen)
-        fullscreen
+        fullscreen-to-file
         ;;
 esac
