@@ -36,9 +36,7 @@ EXTENDED CONTROLS
     Tabbed mode                              - mod (+ Shift) + w
       ^ Hold Shift for Stacking mode
     Floating mode switch                     - mod + f
-    Floating focus switch                    - Alt + Tab
-    Kill focused window                      - mod (+ Shift) + q
-      ^ Hold Shift to send SIGKILL (-9)
+    Kill focused window                      - mod + q
     Resize focused window left/down/up/right - mod (+ Shift) + y/u/i/o
       ^ Hold Shift for precise resize
     Full-screen mode switch                  - mod + m
@@ -47,7 +45,6 @@ EXTENDED CONTROLS
     Reset workspace layer                    - mod + `
     Tile horizontal split                    - mod + g
     Tile vertical split                      - mod + v
-    Cancel tile split                        - mod + c
     Screenshot (Selection to clibboard)      - Print
     Screenshot (Full screen to clipboard)    - Shift + Print
     Screenshot (Full screen to file)         - Control + Shift + Print
