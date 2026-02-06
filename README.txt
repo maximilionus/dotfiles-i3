@@ -16,7 +16,7 @@ REQUIREMENTS
     Configurations here are very heavily reliant on the main dotfiles repository
     and will not work properly without the following configuration packages:
         bash || zsh
-        x11-xinit-modular-xresources
+        x11-xinit-modular
 
 WALLPAPER
     Wallpaper is automatically loaded from this path:
