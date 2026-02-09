@@ -1,13 +1,16 @@
-#!/bin/sh
+#!/bin/bash
+#
+# Execute any provided command in the current working directory of the focused
+# i3 window.
 
-if FOCUSED=$(i3-msg -t get_tree | jq -e '.. | select(.type?) | select(.focused) | .pid') && [ -n "$FOCUSED" ]; then
-    # cwd of first-level child is usually more useful (e.g. shell proc forked from terminal emulator)
-    # but fallback to the cwd of the focused app if no children procs
-    for pid in $(cat "/proc/$FOCUSED/task"/*/children) $FOCUSED; do
-        if cwd=$(readlink -e "/proc/$pid/cwd") && [ -n "$cwd" ]; then
-            cd "$cwd" && break
-        fi
-    done
+cwd=""
+window_id=$(i3-msg -t get_tree | jq '.. | objects | select(.focused==true) | .window')
+window_pid=$(xprop -id $window_id | grep _NET_WM_PID | grep -oP "\d+")
+child_pid=$(pgrep -P $window_pid | tail -n 1)
+
+if [[ ! -z "$child_pid" ]]; then
+    cwd=$(readlink -f "/proc/$child_pid/cwd")
+    cd "$cwd"
 fi
 
 exec "$@"
