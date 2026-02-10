@@ -17,6 +17,7 @@ udisks2
 playerctl
 pavucontrol
 brightnessctl
+lxsession
 polkit-gnome
 gnome-keyring
 gnome-themes-extra
