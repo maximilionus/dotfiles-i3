@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Execute the specified command in the current working directory of the active
 # X11 window.
