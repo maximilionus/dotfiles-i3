@@ -1,1 +1,2 @@
-exec dbus-launch i3
+dbus-update-activation-environment --systemd --all
+exec i3
