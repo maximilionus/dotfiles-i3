@@ -48,3 +48,15 @@ EXTENDED CONTROLS
     Screenshot (Selection to clibboard)      - Print
     Screenshot (Full screen to clipboard)    - Shift + Print
     Screenshot (Full screen to file)         - Control + Shift + Print
+
+KEYRING
+    To automatically create and unlock the "login" keyring on user login, add
+    these lines to:
+
+    /etc/pam.d/login:
+    -----------------
+    auth       ...         ...
+    auth       optional    pam_gnome_keyring.so
+    session    ...         ...
+    session    optional    pam_gnome_keyring.so auto_start
+    -----------------
