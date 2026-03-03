@@ -22,9 +22,6 @@ WALLPAPER
     Wallpaper is automatically loaded from this path:
         ~/Pictures/wallpaper
 
-    PNG format is preferred since it's the only way to put a wallpaper on a lock
-    screen without additional processing.
-
 EXTENDED CONTROLS
     Mod key (mod)                            - Meta (Win)
     Execute                                  - mod + Tab

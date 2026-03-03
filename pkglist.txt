@@ -15,6 +15,7 @@ libnotify
 maim
 udisks2
 playerctl
+imagemagick
 pavucontrol
 brightnessctl
 lxsession
