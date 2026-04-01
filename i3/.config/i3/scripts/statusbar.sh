@@ -30,8 +30,8 @@ keyboard_module="$KB_PREFIX"
 keyboard_module_fnc() {
     local state=$(xset -q | grep -oP 'LED mask:\s*\K[0-9A-Fa-f]+')
     case $state in
-        00000000) keyboard_module="${keyboard_module} main" ;;
-        *) keyboard_module="${keyboard_module} second" ;;
+        00000000) keyboard_module="${keyboard_module} Main" ;;
+        *) keyboard_module="${keyboard_module} Second" ;;
     esac
 }
 keyboard_module_fnc
