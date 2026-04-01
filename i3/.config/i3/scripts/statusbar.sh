@@ -26,16 +26,15 @@ WAKELOCK_ACTIVE="Lock"
 date_module=$(date +'%e %a %H:%M')
 
 # Keyboard
-# TODO: Fix for X11
 keyboard_module="$KB_PREFIX"
 keyboard_module_fnc() {
-    keyboard_module="${keyboard_module}$(i3-msg -t get_inputs \
-        | jq -r '.[] | select(.type=="keyboard") | .xkb_active_layout_name' \
-        | head -n1 \
-        | cut -d' ' -f1 \
-        | cut -c1-2)"
+    local state=$(xset -q | grep -oP 'LED mask:\s*\K[0-9A-Fa-f]+')
+    case $state in
+        00000000) keyboard_module="${keyboard_module} main" ;;
+        *) keyboard_module="${keyboard_module} second" ;;
+    esac
 }
-#keyboard_module_fnc
+keyboard_module_fnc
 
 # Audio
 audio_module="$VOLUME_PREFIX"
@@ -171,7 +170,7 @@ modules=()
 [[ -n "$bluetooth_module" ]]     && modules+=("${SPLITTER}$bluetooth_module")
 [[ -n "$network_module" ]]       && modules+=("${SPLITTER}$network_module")
 [[ -n "$audio_module" ]]         && modules+=("${SPLITTER}$audio_module")
-#[[ -n "$keyboard_module" ]]      && modules+=("${SPLITTER}$keyboard_module")
+[[ -n "$keyboard_module" ]]      && modules+=("${SPLITTER}$keyboard_module")
 [[ -n "$date_module" ]]          && modules+=("${SPLITTER}$date_module")
 
 echo "${modules[*]}$SPLITTER"
