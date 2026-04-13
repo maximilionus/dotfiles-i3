@@ -29,6 +29,7 @@ EXTENDED CONTROLS
       ^ Hold Shift to open in the same directory as focused window.
     Power menu                               - mod + Delete
     Screen lock                              - mod + Escape
+    Virtual keyboard                         - mod + z
     Split mode                               - mod + e
     Tabbed mode                              - mod (+ Shift) + w
       ^ Hold Shift for Stacking mode

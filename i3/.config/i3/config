@@ -40,23 +40,19 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $screenlock
 # Key bindings
 ## Basics:
 
-### Start a terminal
+floating_modifier $mod
+bindsym $mod+Shift+c reload
+
 bindsym $mod+Return exec --no-startup-id $term
-
 bindsym $mod+Shift+Return exec --no-startup-id $exec_cwd $term
-
-bindsym $mod+Escape exec --no-startup-id $screenlock
 
 bindsym $mod+q kill
 bindsym $mod+Shift+q exec --no-startup-id sh -c 'kill -9 $(i3-msg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
+bindsym $mod+Escape exec --no-startup-id $screenlock
 bindsym $mod+Tab exec --no-startup-id $menu
-
-floating_modifier $mod
-
-bindsym $mod+Shift+c reload
-
 bindsym $mod+Delete exec --no-startup-id $power_menu
+bindcode $mod+52 exec --no-startup-id onboard
 
 ## Moving around:
 bindcode $mod+43 focus left

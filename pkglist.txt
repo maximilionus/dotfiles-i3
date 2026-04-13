@@ -13,6 +13,7 @@ dmenu
 dunst
 libnotify
 maim
+onboard
 udisks2
 playerctl
 imagemagick

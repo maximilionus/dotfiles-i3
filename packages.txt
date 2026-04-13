@@ -11,6 +11,7 @@ suckless-tools
 dunst
 libnotify-bin
 maim
+onboard
 udisks2
 playerctl
 imagemagick
