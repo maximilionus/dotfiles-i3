@@ -5,7 +5,7 @@ SUPPORTED SYSTEMS
     Arch
 
 INSTALL
-    Firstly install all the required packages:
+    First, install all the required packages:
         (debian) # xargs -a packages.txt apt install --
         (arch)   # cat pkglist.txt | pacman -S --needed --
 
