@@ -31,10 +31,15 @@ keyboard_module_fnc() {
     local mask=$((16#$(xset -q | awk '/LED mask:/ {print $NF}')))
     local layouts=$(setxkbmap -query | awk -F': *' '/layout:/ { print $2 }')
     local current_group=$(( (mask & 0x1000) ? 1 : 0 ))
+    local caps_status=""
+
+    if (( mask & 0x1 )); then
+        caps_status="^"
+    fi
 
     IFS=',' read -ra layout_array <<< "$layouts"
 
-    keyboard_module="${keyboard_module} ${layout_array[$current_group]}"
+    keyboard_module="${keyboard_module} ${caps_status}${layout_array[$current_group]}"
 }
 keyboard_module_fnc
 
