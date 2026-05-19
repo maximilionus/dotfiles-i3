@@ -184,8 +184,7 @@ set $accent       #4A8BE3
 bar {
     position top
 
-    status_command while true; do $statusbar; sleep 1; done
-    #status_command i3status
+    status_command $statusbar
 
     colors {
         statusline         $foreground_1

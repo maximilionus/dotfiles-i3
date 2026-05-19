@@ -23,11 +23,16 @@ WAKELOCK_PREFIX="WAKE"
 WAKELOCK_ACTIVE="Lock"
 
 # Date
-date_module=$(date +'%e %a %H:%M')
+date_module=""
+date_module_fnc() {
+    date_module=$(date +'%e %a %H:%M')
+}
 
 # Keyboard
-keyboard_module="$KB_PREFIX"
+keyboard_module=""
 keyboard_module_fnc() {
+    keyboard_module="$KB_PREFIX"
+
     local mask=$((16#$(xset -q | awk '/LED mask:/ {print $NF}')))
     local layouts=$(setxkbmap -query | awk -F': *' '/layout:/ { print $2 }')
     local current_group=$(( (mask & 0x1000) ? 1 : 0 ))
@@ -41,11 +46,12 @@ keyboard_module_fnc() {
 
     keyboard_module="${keyboard_module} ${caps_status}${layout_array[$current_group]}"
 }
-keyboard_module_fnc
 
 # Audio
-audio_module="$VOLUME_PREFIX"
+audio_module=""
 audio_module_fnc() {
+    audio_module="$VOLUME_PREFIX"
+
     local vol mute
     mute=$(pactl get-sink-mute "@DEFAULT_SINK@" | awk '{print $2}')
 
@@ -56,11 +62,11 @@ audio_module_fnc() {
     vol=$(pactl get-sink-volume "@DEFAULT_SINK@" | awk -F'/' 'NR==1 {gsub(/ /,"",$2); print $2}')
     audio_module="$audio_module $vol"
 }
-audio_module_fnc
 
 # Battery
 battery_module=""
 battery_module_fnc() {
+    battery_module=""
     local battery_status=$(ls /sys/class/power_supply/ | grep BAT | head -n1)
 
     if [[ -z $battery_status ]]; then
@@ -76,11 +82,11 @@ battery_module_fnc() {
 
     battery_module="$BATTERY_PREFIX$icon $capacity%"
 }
-battery_module_fnc
 
 # Screen backlight
 backlight_module=""
 backlight_module_fnc() {
+    backlight_module=""
     backlight_dir="/sys/class/backlight"
     device=$(ls "$backlight_dir" 2>/dev/null | head -n1)
 
@@ -91,11 +97,11 @@ backlight_module_fnc() {
         backlight_module="$BACKLIGHT_PREFIX  $percent%"
     fi
 }
-backlight_module_fnc
 
 # Network
-network_module="$NET_PREFIX $NET_DOWN"
+network_module=""
 network_module_fnc() {
+    network_module="$NET_PREFIX $NET_DOWN"
     default_iface=$(ip route 2>/dev/null | awk '/^default/ {print $5; exit}')
 
     if [[ -n "$default_iface" ]]; then
@@ -114,11 +120,12 @@ network_module_fnc() {
         fi
     fi
 }
-network_module_fnc
 
 # Bluetooth
 bluetooth_module=""
 bluetooth_module_fnc() {
+    bluetooth_module=""
+
     if ! systemctl is-active --quiet bluetooth.service; then
         return 0
     fi
@@ -133,11 +140,12 @@ bluetooth_module_fnc() {
         bluetooth_module="$BLUETOOTH_PREFIX"
     fi
 }
-bluetooth_module_fnc
 
 # Notifications
 notifications_module=""
 notifications_module_fnc() {
+    notifications_module=""
+
     if ! pidof dunst > /dev/null; then
         return 0;
     fi
@@ -155,29 +163,51 @@ notifications_module_fnc() {
         fi
     fi
 }
-notifications_module_fnc
 
 # Wakelock (always on mode)
-wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
+wakelock_module=""
 wakelock_module_fnc() {
+    wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
+
     if ! xset q | grep -q "DPMS is Disabled"; then
         wakelock_module=""
     fi
 }
-wakelock_module_fnc
 
-# Formatted final output with proper margin
-# Margin... using spaces. Sorry not sorry :)
-modules=()
+i=0
+while true; do
+    audio_module_fnc
+    keyboard_module_fnc
+    backlight_module_fnc
+    notifications_module_fnc
 
-[[ -n "$wakelock_module" ]]      && modules+=("${SPLITTER}$wakelock_module")
-[[ -n "$notifications_module" ]] && modules+=("${SPLITTER}$notifications_module")
-[[ -n "$backlight_module" ]]     && modules+=("${SPLITTER}$backlight_module")
-[[ -n "$battery_module" ]]       && modules+=("${SPLITTER}$battery_module")
-[[ -n "$bluetooth_module" ]]     && modules+=("${SPLITTER}$bluetooth_module")
-[[ -n "$network_module" ]]       && modules+=("${SPLITTER}$network_module")
-[[ -n "$audio_module" ]]         && modules+=("${SPLITTER}$audio_module")
-[[ -n "$keyboard_module" ]]      && modules+=("${SPLITTER}$keyboard_module")
-[[ -n "$date_module" ]]          && modules+=("${SPLITTER}$date_module")
+    if (( i % 10 == 0 )); then
+        battery_module_fnc
+        network_module_fnc
+        bluetooth_module_fnc
+        wakelock_module_fnc
+    fi
 
-echo "${modules[*]}$SPLITTER"
+    if (( i % 59 == 0 )); then
+        date_module_fnc
+    fi
+
+    # formatted final output with proper margin
+    # margin... using spaces. sorry not sorry :)
+    statusline=""
+
+    [[ -n "$wakelock_module" ]]      && statusline+="${SPLITTER}$wakelock_module"
+    [[ -n "$notifications_module" ]] && statusline+="${SPLITTER}$notifications_module"
+    [[ -n "$backlight_module" ]]     && statusline+="${SPLITTER}$backlight_module"
+    [[ -n "$battery_module" ]]       && statusline+="${SPLITTER}$battery_module"
+    [[ -n "$bluetooth_module" ]]     && statusline+="${SPLITTER}$bluetooth_module"
+    [[ -n "$network_module" ]]       && statusline+="${SPLITTER}$network_module"
+    [[ -n "$audio_module" ]]         && statusline+="${SPLITTER}$audio_module"
+    [[ -n "$keyboard_module" ]]      && statusline+="${SPLITTER}$keyboard_module"
+    [[ -n "$date_module" ]]          && statusline+="${SPLITTER}$date_module"
+
+    echo "${statusline}${SPLITTER}"
+    ((i++))
+
+    sleep 1
+done
