@@ -53,8 +53,6 @@ KEYRING
 
     /etc/pam.d/login:
     -----------------
-    auth       ...         ...
     auth       optional    pam_gnome_keyring.so
-    session    ...         ...
     session    optional    pam_gnome_keyring.so auto_start
     -----------------
