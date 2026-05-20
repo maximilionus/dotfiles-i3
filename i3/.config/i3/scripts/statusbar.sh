@@ -176,6 +176,7 @@ wakelock_module_fnc() {
 
 i=0
 while true; do
+    date_module_fnc
     audio_module_fnc
     keyboard_module_fnc
     backlight_module_fnc
@@ -186,10 +187,6 @@ while true; do
         network_module_fnc
         bluetooth_module_fnc
         wakelock_module_fnc
-    fi
-
-    if (( i % 59 == 0 )); then
-        date_module_fnc
     fi
 
     # formatted final output with proper margin
